@@ -65,7 +65,6 @@ Controller.prototype.destroyIngredient = function(ingredient)
 
 Controller.prototype.interaction = function()
 {
-	
 	var l = this.stage.getNumChildren();
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
@@ -73,8 +72,9 @@ Controller.prototype.interaction = function()
 		if( (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && 
 			!ingredient.catched && !ingredient.dropped ) 
 		{
-			var xDistance = utils.abs(ingredient.x, this.player.x);
-			if ( xDistance < 20 )
+			var xDistance = ingredient.x - this.player.x;
+			var xDistanceAbs = utils.abs( ingredient.x, this.player.x )
+			if ( xDistanceAbs < 20 )
 			{
 				ingredient.catched = true;
 				ingredient.x = this.player.x;
@@ -84,10 +84,10 @@ Controller.prototype.interaction = function()
 			else
 			{
 				ingredient.dropped = true;
-				if ( xDistance < 100 )
+				if ( xDistanceAbs < 100 )
 				{
-					//TODO: do drop anim here
-					console.log( "drop anim" )
+					var angle = xDistance > 0 ? 75 : -75;
+					Tween.get( ingredient ).to( {rotation: angle}, 500, Ease.linear )
 				}
 			}
 		}
