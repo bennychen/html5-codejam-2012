@@ -36,10 +36,15 @@
 	
 	var lfHeld;
 	var rtHeld;
+
+	var BOUND_LEFT;
+	var BOUND_RIGHT; 
 	
 	function init() {
 	
 		canvas = document.getElementById("mainCanvas");
+		BOUND_LEFT = 0 
+		BOUND_RIGHT = canvas.width
 	
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new Stage(canvas);

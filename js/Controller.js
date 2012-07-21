@@ -121,6 +121,7 @@ Controller.prototype.update = function()
 
 		ingredient.y = h-totalHeight;
 	}
+	this.player.y = h-this.player.height;
 	
 	if(lfHeld) 
 	{
@@ -130,7 +131,7 @@ Controller.prototype.update = function()
 	{
 		this.player.x = this.player.x+MOVE_PLAYER_SPEED;
 	}
-	this.player.y = h-this.player.height;
+	this.player.x = utils.clamp( this.player.x, BOUND_LEFT, BOUND_RIGHT );
 
 	var lastIngredient = this.player;
 	for(var i = 1; i < this.catchedIngredients.length; i++)

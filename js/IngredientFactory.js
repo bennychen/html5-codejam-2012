@@ -13,7 +13,7 @@
 		var width = utils.getIngredientWidth();
 		var height = utils.getIngredientHeight(type);
 		var ingredient = new Ingredient(type, width, height);
-		ingredient.x = Math.random() * canvas.width % canvas.width;
+		ingredient.x = BOUND_LEFT + Math.random() * BOUND_RIGHT;
 		ingredient.y =  - 100;
 		return ingredient;
 	}
