@@ -8,9 +8,11 @@
 		this.active=true;	
 		this.initialize();
 		this.height = height;
+		this.type = type;
 	}
 
 	Ingredient.prototype.height;
+	Ingredient.prototype.type;
 	Ingredient.prototype = new Container();
 	Ingredient.prototype.vx = 0;
 	Ingredient.prototype.vy = 10;
@@ -31,6 +33,10 @@
 	Ingredient.prototype.getHeight = function()
 	{
 		return this.height;
+	}
+	Ingredient.prototype.getType = function()
+	{
+		return this.type;
 	}
 	window.Ingredient = Ingredient;
 

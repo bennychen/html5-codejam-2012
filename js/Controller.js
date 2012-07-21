@@ -10,6 +10,15 @@ Controller.catchedIngredients;
 Controller.player;
 Controller.timerId;
 
+Controller.prototype.isGameOver = function(ingredient)
+{
+	if(ingredient.getType() == 'top')
+	{
+		console.log("game over");	
+	} 
+	
+}
+
 Controller.prototype.startGame = function()
 {
 	this.addPlayer();
@@ -85,7 +94,11 @@ Controller.prototype.update = function()
 			}
 		}
 	}
+	
 	for(var i=0; i<this.catchedIngredients.length; i++) {
+		
+		this.isGameOver(this.catchedIngredients[i]);
+		
 		this.catchedIngredients[i].y = h-35*(i+1);
 		if(lfHeld) {
 			this.catchedIngredients[i].x = this.catchedIngredients[i].x-13;
