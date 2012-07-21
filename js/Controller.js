@@ -125,7 +125,7 @@ Controller.prototype.update = function()
 	for(var i=0; i<this.catchedIngredients.length; i++) 
 	{
 		var ingredient = this.catchedIngredients[i];
-		totalHeight += ingredient.height;
+		totalHeight += ingredient.height * 0.8;
 		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE - 1 )
 		{
 			this.stageOffsetY = utils.lerp( this.stageOffsetY, totalHeight - gapToBottomBorder, Ticker.getInterval() / 100 );
