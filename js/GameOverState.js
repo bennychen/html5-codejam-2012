@@ -8,5 +8,5 @@ function OnExitGameOverState()
 	//TODO
 }
 
-var GameOverState = State( OnEnterGameOverState, OnExitGameOverState );
+var GameOverState = new State( OnEnterGameOverState, OnExitGameOverState );
 

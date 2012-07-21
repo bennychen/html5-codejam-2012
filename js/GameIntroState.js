@@ -8,5 +8,5 @@ function OnExitGameIntroState()
 	//TODO
 }
 
-var GameIntroState = State( OnEnterGameIntroState, OnExitGameIntroState );
+var GameIntroState = new State( OnEnterGameIntroState, OnExitGameIntroState );
 

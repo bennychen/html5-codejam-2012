@@ -8,5 +8,5 @@ function OnExitMenuState()
 	//TODO
 }
 
-var MenuState = State( OnEnterMenuState, OnExitMenuState );
+var MenuState = new State( OnEnterMenuState, OnExitMenuState );
 
