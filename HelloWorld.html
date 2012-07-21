@@ -5,29 +5,24 @@
 	<title>Sky Burger</title>
 
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<!-- We also provide hosted minified versions of all CreateJS libraries.
-	  http://code.createjs.com -->
 
 	<script src="http://code.createjs.com/easeljs-0.4.2.min.js"></script>
-	<script src="http://code.createjs.com/preloadjs-0.1.0.min.js"></script>
-	<script src="http://code.createjs.com/soundjs-0.2.0.min.js"></script>
 	<script src="http://code.createjs.com/tweenjs-0.2.0.min.js"></script>
+	<script src="http://code.createjs.com/soundjs-0.2.0.min.js"></script>
+	<script src="http://code.createjs.com/preloadjs-0.1.0.min.js"></script>
 	<script src="http://code.createjs.com/movieclip-0.4.1.min.js"></script>
 	
-
 	<script type="text/javascript" src="js/Ingredient.js"></script>
 	<script type="text/javascript" src="js/IngredientFactory.js"></script>
 	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/State.js"></script>
-
+	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script>
+	
 	var canvas;
 	var stage;
-	var text;
 	var factory;
 	var controller;
-	var base;   // the buttom, player!
- 	
  	
 	var KEYCODE_ENTER = 13;		//usefull keycode
 	var KEYCODE_SPACE = 32;		//usefull keycode
@@ -42,81 +37,21 @@
 	var rtHeld;
 	
 	
-	
-	//register key functions
-	document.onkeydown = handleKeyDown;
-	document.onkeyup = handleKeyUp;
+
 	
 	function init() {
+	
 		canvas = document.getElementById("mainCanvas");
+	
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new Stage(canvas);
-
-
 		factory = new IngredientFactory();
 		controller = new Controller(stage, canvas);
 		
 
-		controller.startGame();
-		
-		canvas.onclick = handleClick;
+		SM.RegisterState( "ingame", InGameState );
 
-		function onEnterMenu()
-		{
-			console.log( "enter menu" );
-		}
-		function onExitMenu()
-		{
-			console.log( "exit menu" );
-		}
-		var menuState = new State( onEnterMenu, onExitMenu );
-		SM.RegisterState( "menu", menuState );
-
-		SM.SetStateByName( "menu" );
-	}
-	
-	function handleClick() {
-		//prevent extra clicks and hide text
-		canvas.onclick = null;
-		stage.removeChild(text);
-
-		restart();
-	}
-	
-	//allow for WASD and arrow control scheme
-	function handleKeyDown(e) {
-		//cross browser issues exist
-		if(!e){ var e = window.event; }
-		switch(e.keyCode) {
-			case KEYCODE_LEFT:	lfHeld = true; return false;
-			case KEYCODE_RIGHT: rtHeld = true; return false;
-		}
-	}
-
-	function handleKeyUp(e) {
-		//cross browser issues exist
-		if(!e){ var e = window.event; }
-		switch(e.keyCode) {
-			case KEYCODE_LEFT:	lfHeld = false; break;
-			case KEYCODE_RIGHT: rtHeld = false; break;
-		}
-	}
-	
-	
-	//reset all game logic
-	function restart() {
-		//hide anything on stage and show the score
-		stage.removeAllChildren();
-
-		//ensure stage is blank and add the ship
-		stage.clear();
-		
-		
-		stage.addChild(base);
-		//start game timer
-		Ticker.addListener(window);
-		
-		
+		SM.SetStateByName( "ingame" );
 	}
 	
 	function abs(lvalue, rvalue)
@@ -126,13 +61,7 @@
 		else 
 			return rvalue-lvalue;
 	}
-	
-	function tick() {
 
-		controller.interaction();
-		controller.update();
-		
-	}
 	</script>
 </head>
 	
