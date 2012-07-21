@@ -11,6 +11,7 @@ Controller.player;
 
 Controller.prototype.startGame = function()
 {
+	this.addPlayer();
 	setInterval(this.addIngredient, 2000);
 }
 
@@ -18,6 +19,7 @@ Controller.prototype.addPlayer = function()
 {
 	this.player = factory.CreatePlayer();
 	this.catchedIngredients.push(this.player);
+	
 }
 Controller.prototype.addIngredient = function()
 {
