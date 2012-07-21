@@ -22,8 +22,13 @@
 	<!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
 	<script type="text/javascript" src="js/Ingredient.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript" src="js/IngredientFactory.js"></script>
 	<script type="text/javascript" src="js/Controller.js"></script>
+=======
+
+	<script type="text/javascript" src="js/State.js"></script>
+>>>>>>> 0048a694287838c9d96d418cfe82fd6bae9c77ae
 	<script>
 	var canvas;
 	var stage;
@@ -76,6 +81,19 @@
 		// call update on the stage to make it render the current display list to the canvas:
 		stage.update();
 		canvas.onclick = handleClick;
+
+		function onEnterMenu()
+		{
+			console.log( "enter menu" );
+		}
+		function onExitMenu()
+		{
+			console.log( "exit menu" );
+		}
+		var menuState = new State( onEnterMenu, onExitMenu );
+		SM.RegisterState( "menu", menuState );
+
+		SM.SetStateByName( "menu" );
 	}
 	
 	function handleClick() {
