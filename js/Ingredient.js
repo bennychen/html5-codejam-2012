@@ -11,7 +11,7 @@
 		
 	}
 
-	Ingredient.prototype = new createjs.Container();
+	Ingredient.prototype = new Container();
 
 	Ingredient.prototype.vx = 0;
 	Ingredient.prototype.vy = 10;
@@ -24,13 +24,13 @@
 	Ingredient.prototype.Container_initialize = Ingredient.prototype.initialize;
     Ingredient.prototype.initialize = function() {
         this.Container_initialize();
-        var bmp = new createjs.Bitmap(this.imageSource);
+        var bmp = new Bitmap(this.imageSource);
         this.addChild(bmp);
 
     }
 
     function handleImageLoad() {
-       var bmp = new createjs.Bitmap(this.imageSource);
+       var bmp = new Bitmap(this.imageSource);
        this.addChild(bmp);
     }
 	

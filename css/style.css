@@ -291,3 +291,25 @@ td { vertical-align: top; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+
+
+/* ========== basic element style ==================*/
+body {
+	background-color:#EEE;
+	text-align:center;
+	padding:20px;
+	
+}
+#canvasHolder {
+	margin:0 auto;
+	background-color:#FFF;
+	border-radius:10px;
+	width:980px;
+	height:620px;
+	padding:10px;
+	box-shadow:1px 1px 5px #000;
+}
+#mainCanvas {
+	background-color:#000;
+}
