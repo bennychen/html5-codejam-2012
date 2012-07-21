@@ -4,26 +4,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>EaselJS Example: Text</title>
 
-	<link href="css/demoStyles.css" rel="stylesheet" type="text/css" />
-
-	<script type="text/javascript" src="js/libs/easeljs/utils/UID.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/utils/Ticker.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/geom/Matrix2D.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/geom/Rectangle.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/DisplayObject.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/Container.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/Stage.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/events/MouseEvent.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/Text.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/SpriteSheet.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/BitmapAnimation.js"></script>
-	<script type="text/javascript" src="js/libs/easeljs/display/Bitmap.js"></script>
-	
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
-	<script type="text/javascript" src="js/Ingredient.js"></script>
+	<script src="http://code.createjs.com/easeljs-0.4.2.min.js"></script>
+	<script src="http://code.createjs.com/preloadjs-0.1.0.min.js"></script>
+	<script src="http://code.createjs.com/soundjs-0.2.0.min.js"></script>
+	<script src="http://code.createjs.com/tweenjs-0.2.0.min.js"></script>
+	<script src="http://code.createjs.com/movieclip-0.4.1.min.js"></script>
+	
 
-	<script type="text/javascript" src="js/State.js"></script>
+	<script src="js/Ingredient.js"></script>
+	<script src="js/State.js"></script>
 	<script>
 	var canvas;
 	var stage;
@@ -50,11 +42,11 @@
 	document.onkeyup = handleKeyUp;
 	
 	function init() {
-		canvas = document.getElementById("testCanvas");
+		canvas = document.getElementById("mainCanvas");
 		// create a stage object to work with the canvas. This is the top level node in the display list:
-		stage = new createjs.Stage(canvas);
+		stage = new Stage(canvas);
 
-		text = new createjs.Text("Sky Burger", "36px Arial", "#777");
+		text = new Text("Sky Burger", "36px Arial", "#777");
 		stage.addChild(text);
 		text.x = 360;
 		text.y = 200;
@@ -129,7 +121,7 @@
 		
 		stage.addChild(base);
 		//start game timer
-		createjs.Ticker.addListener(window);
+		Ticker.addListener(window);
 		
 		
 	}
@@ -191,12 +183,10 @@
 <body onload="init();">
 
 	<header id="header" class="EaselJS">
-	    <h1><span class="text-product">Easel<strong>JS</strong></span> Hello World!</h1>
-	    <p>Hello World example using <strong>Text</strong> and <strong>Stage</strong>.</p>
 	</header>
 
-	<div class="canvasHolder">
-		<canvas id="testCanvas" width="960" height="400"></canvas>
+	<div id="canvasHolder">
+		<canvas id="mainCanvas" width="980" height="620"></canvas>
 	</div>
 </body>
 </html>
