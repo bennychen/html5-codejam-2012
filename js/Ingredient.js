@@ -1,20 +1,22 @@
 (function(window) {
 	
-	function Ingredient(type, height) {
+	function Ingredient(type, width, height) {
 		this.oldX=0;
 		this.oldY=0;
 		this.imageSource = 'img/burger/' + type + '.png';
 		this.catched = false;
 		this.active=true;	
 		this.initialize();
+		this.width = width;
 		this.height = height;
-	}
-
-	Ingredient.prototype.height = function()
-	{
 		this.type = type;
+
+		var bmp = this.getChildAt( 0 );
+		bmp.regX = this.width / 2;
+		bmp.regY = this.height / 2;
 	}
 
+	Ingredient.prototype.width;
 	Ingredient.prototype.height;
 	Ingredient.prototype.type;
 	Ingredient.prototype = new Container();

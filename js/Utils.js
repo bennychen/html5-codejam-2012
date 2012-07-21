@@ -38,4 +38,10 @@ Utils.prototype.getIngredientHeight = function(type)
 	}
 	return height;
 }
+
+Utils.prototype.getIngredientWidth = function()
+{
+	return 100;
+}
+
 var utils = new Utils();

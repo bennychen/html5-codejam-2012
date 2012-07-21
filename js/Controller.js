@@ -87,7 +87,7 @@ Controller.prototype.interaction = function()
 				if ( xDistanceAbs < 100 )
 				{
 					var angle = xDistance > 0 ? 75 : -75;
-					Tween.get( ingredient ).to( {rotation: angle}, 500, Ease.linear )
+					Tween.get( ingredient ).to( {rotation: angle}, 500, Ease.linear );
 				}
 			}
 		}
@@ -103,7 +103,8 @@ Controller.prototype.update = function()
 	// iterate through all the children and move them according to their velocity:
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
-		if( ingredient != undefined && !ingredient.catched ){ 
+		if( ingredient != undefined && !ingredient.catched )
+		{ 
 			ingredient.y= (ingredient.y+ingredient.vy);
 			if(ingredient.y>h) {
 				this.destroyIngredient(ingredient);

@@ -9,8 +9,9 @@
 	IngredientFactory.prototype.CreateRandomIngredient = function()
 	{
 		var type = this.ingredients[Math.random()*this.ingredients.length|0];
+		var width = utils.getIngredientWidth();
 		var height = utils.getIngredientHeight(type);
-		var ingredient = new Ingredient(type, height);
+		var ingredient = new Ingredient(type, width, height);
 		ingredient.x = Math.random() * canvas.width % canvas.width;
 		ingredient.y =  - 100;
 		return ingredient;
