@@ -13,7 +13,7 @@
 
 		var bmp = this.getChildAt( 0 );
 		bmp.regX = this.width / 2;
-		bmp.regY = this.height / 2;
+		bmp.regY = 0;
 	}
 
 	Ingredient.prototype.width;

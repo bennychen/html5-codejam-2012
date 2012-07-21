@@ -67,15 +67,16 @@ Controller.prototype.destroyIngredient = function(ingredient)
 Controller.prototype.interaction = function()
 {
 	var l = this.stage.getNumChildren();
+	var checkedIngredient = this.catchedIngredients[this.catchedIngredients.length-1];
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
 	
-		if( (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && 
+		if( checkedIngredient.y - checkedIngredient.height -(ingredient.y+ingredient.vy) < 5 && 
 			!ingredient.catched && !ingredient.dropped ) 
 		{
-			var xDistance = ingredient.x - this.player.x;
-			var xDistanceAbs = utils.abs( ingredient.x, this.player.x )
-			if ( xDistanceAbs < 20 )
+			var xDistance = ingredient.x - checkedIngredient.x;
+			var xDistanceAbs = utils.abs( ingredient.x, checkedIngredient.x )
+			if ( xDistanceAbs < 40 )
 			{
 				ingredient.catched = true;
 				ingredient.x = this.player.x;
