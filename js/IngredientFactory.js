@@ -14,6 +14,16 @@
 		return ingredient;
 	}
 	
+	IngredientFactory.prototype.CreatePlayer = function()
+	{
+		var player = new Ingredient('bottom');
+		player.x = canvas.width/2;
+		player.y = canvas.height;
+		player.catched = true;
+		return player;
+	}
+	
+	
 	IngredientFactory.prototype.CreateIngredient = function(type)
 	{
 		return new Ingredient(type);
