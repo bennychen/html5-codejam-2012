@@ -70,12 +70,26 @@ Controller.prototype.interaction = function()
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
 	
-		if( utils.abs(ingredient.x, this.player.x) < 20 && (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
-			ingredient.catched = true;
-			ingredient.x = this.player.x;
-			ingredient.y = this.player.y;
-			this.catchedIngredients.push(ingredient);
-			
+		if( (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && 
+			!ingredient.catched && !ingredient.dropped ) 
+		{
+			var xDistance = utils.abs(ingredient.x, this.player.x);
+			if ( xDistance < 20 )
+			{
+				ingredient.catched = true;
+				ingredient.x = this.player.x;
+				ingredient.y = this.player.y;
+				this.catchedIngredients.push(ingredient);
+			}
+			else
+			{
+				ingredient.dropped = true;
+				if ( xDistance < 100 )
+				{
+					//TODO: do drop anim here
+					console.log( "drop anim" )
+				}
+			}
 		}
 	}
 }
