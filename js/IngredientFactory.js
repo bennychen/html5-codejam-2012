@@ -6,6 +6,7 @@
 	
 	Ingredient.ingredients;
 	
+	
 	IngredientFactory.prototype.CreateRandomIngredient = function()
 	{
 		var type = this.ingredients[Math.random()*this.ingredients.length|0];
@@ -19,7 +20,8 @@
 	
 	IngredientFactory.prototype.CreatePlayer = function()
 	{
-		var player = new Ingredient("bottom");
+		var height = utils.getIngredientHeight('bottom');
+		var player = new Ingredient("bottom",height);
 		player.x = canvas.width/2;
 		player.y = canvas.height - 35;
 		player.catched = true;

@@ -113,18 +113,18 @@ Controller.prototype.update = function()
 	}
 	
 	for(var i=0; i<this.catchedIngredients.length; i++) {
-		
-		this.isGameOver(this.catchedIngredients[i]);
-		
-		this.catchedIngredients[i].y = h-35*(i+1);
+		var ingredient = this.catchedIngredients[i];
+		this.isGameOver(ingredient);	
+		ingredient.y = h-ingredient.height*(i+1);
 		if(lfHeld) {
-			this.catchedIngredients[i].x = this.catchedIngredients[i].x-MOVE_PLAYER_SPEED;
+			ingredient.x = ingredient.x-MOVE_PLAYER_SPEED;
 		}
 		if(rtHeld) {
-			this.catchedIngredients[i].x = this.catchedIngredients[i].x+MOVE_PLAYER_SPEED;
+			ingredient.x = ingredient.x+MOVE_PLAYER_SPEED;
 		}
 	}
-	this.player.y = h-35;
+	
+	this.player.y = h-this.player.height;
 	
 	// draw the updates to stage:
 	this.stage.update();
