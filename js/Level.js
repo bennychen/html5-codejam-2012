@@ -14,10 +14,8 @@ var hardOrders = {};
 
 var level = null;
 
-function initOrders() {
-	
-	
-	easyOrders.push({
+
+easyOrders.push({
 		 name:'Prizeburger',
 		 ingredients:{
 			 {type:'onion', num: 1 },
@@ -25,8 +23,8 @@ function initOrders() {
 			 {type:'cheese', num: 3 },
 			 {type:'meat', num: 1 },
 		 }
-	 });
-	easyOrders.push({
+ });
+easyOrders.push({
 		 name:'BLOOP',
 		 ingredients:{
 			 {type:'onion', num:4},
@@ -34,10 +32,9 @@ function initOrders() {
 			 {type:'cheese', num: 2 },
 			 {type:'meat', num: 4 },
 		 }
-	 });
-	 
-	
-	normalOrders.push({
+ });
+	 	
+normalOrders.push({
 		 name:'Maxburger',
 		 ingredients:{
 			 {type:'onion', num:9},
@@ -48,8 +45,8 @@ function initOrders() {
 			 {type:'lettuce', num: 9 },
 			 
 		 }
-	 });
-	normalOrders.push({
+ });
+normalOrders.push({
 		 name:'Idontknowwhat',
 		 ingredients:{
 			 {type:'onion', num:8},
@@ -58,7 +55,7 @@ function initOrders() {
 			 {type:'meat', num: 4 },
 			 {type:'egg', num: 4 }		 }
 	 });
-	normalOrders.push({
+normalOrders.push({
 		 name:'Idontknowwhat',
 		 ingredients:{
 			 {type:'onion', num:8},
@@ -67,7 +64,7 @@ function initOrders() {
 			 {type:'meat', num: 4 },
 			 {type:'egg', num: 4 }		 }
 	 });
-	normalOrders.push({
+normalOrders.push({
 		 name:'PLOT',
 		 ingredients:{
 			 {type:'onion', num:5},
@@ -76,7 +73,7 @@ function initOrders() {
 			 {type:'meat', num: 15 },
 			 {type:'egg', num: 5 }		 }
 	 });
-	normalOrders.push({
+normalOrders.push({
 		 name:'Tomaintno',
 		 ingredients:{
 			 {type:'onion', num:6},
@@ -84,7 +81,7 @@ function initOrders() {
 			 {type:'meat', num: 12 },
 			 {type:'egg', num: 6 }		 }
 	 });
-	normalOrders.push({
+normalOrders.push({
 		 name:'Crybaby',
 		 ingredients:{
 			 {type:'onion', num:21},
@@ -92,7 +89,7 @@ function initOrders() {
 			 {type:'meat', num: 14 }
 		}
 	 });
-	normalOrders.push({
+normalOrders.push({
 		 name:'Salsaburger',
 		 ingredients:{
 			 {type:'onion', num:16},
@@ -101,7 +98,7 @@ function initOrders() {
 		}
 	 });
 	 
-	normalOrders.push({
+normalOrders.push({
 		 name:'SkyBurger',
 		 ingredients:{
 			 {type:'onion', num:0},
@@ -112,8 +109,8 @@ function initOrders() {
 			 {type:'lettuce', num:0 },
 			 
 		 }
-	 });
-}
+});
+
 
 function getOrder(difficulty) {
 	
@@ -132,10 +129,9 @@ function getOrder(difficulty) {
 function Level() {
 	this.levelNum = 0;
 	this.order = null;
-
 }
 
-Level.prototype.newLevel = function() {
+Level.prototype.generateNextLevel = function() {
 	this.levelNum++;
 	
 	if ( levelNum < 3 ) {
