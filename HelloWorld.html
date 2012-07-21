@@ -22,18 +22,13 @@
 	<!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
 	<script type="text/javascript" src="js/Ingredient.js"></script>
-<<<<<<< HEAD
 	<script type="text/javascript" src="js/IngredientFactory.js"></script>
 	<script type="text/javascript" src="js/Controller.js"></script>
-=======
-
 	<script type="text/javascript" src="js/State.js"></script>
->>>>>>> 0048a694287838c9d96d418cfe82fd6bae9c77ae
 	<script>
 	var canvas;
 	var stage;
 	var text;
-	
 	var factory;
 	var controller;
 	var base;   // the buttom, player!
@@ -51,7 +46,7 @@
 	var lfHeld;
 	var rtHeld;
 	
-	var catched=[];
+	
 	
 	//register key functions
 	document.onkeydown = handleKeyDown;
@@ -63,23 +58,10 @@
 		stage = new createjs.Stage(canvas);
 
 		factory = new IngredientFactory();
+		controller = new Controller(stage, canvas);
 		
-		text = new createjs.Text("Sky Burger", "36px Arial", "#777");
-		stage.addChild(text);
-		controller = new Controller(stage);
-		setInterval(controller.addIngredient, 2000);
+		controller.startGame();
 		
-		text.x = 360;
-		text.y = 200;
-
-		base = new Ingredient('bottom');
-		base.x = canvas.width/2;
-		base.y = canvas.height;
-		base.catched = true;
-		catched.push(base);
-		
-		// call update on the stage to make it render the current display list to the canvas:
-		stage.update();
 		canvas.onclick = handleClick;
 
 		function onEnterMenu()
@@ -147,49 +129,12 @@
 		else 
 			return rvalue-lvalue;
 	}
-	function handleInteraction()
-	{
-		var l = stage.getNumChildren();
-		for (var i=0; i<l; i++) {
-			var ingredient = stage.getChildAt(i);
-			if( abs(ingredient.x, base.x) < 20 && (base.y-catched.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
-				ingredient.catched = true;
-				ingredient.x = base.x;
-				ingredient.y = base.y;
-				catched.push(ingredient);
-				
-			}
-		}
-	}
 	
 	function tick() {
 
-		var w = canvas.width;
-		var h = canvas.height;
-		var l = stage.getNumChildren();
-
-		handleInteraction();
-		// iterate through all the children and move them according to their velocity:
-		for (var i=0; i<l; i++) {
-			var ingredient = stage.getChildAt(i);
-			if( ingredient != undefined && !ingredient.catched ){ 
-				ingredient.y= (ingredient.y+ingredient.vy);
-				if(ingredient.y>h) {
-					controller.destroyIngredient(ingredient);
-				}
-			}
-		}
-		for(var i=0; i<catched.length; i++) {
-			catched[i].y = h-34*(i+1);
-			if(lfHeld) {
-				catched[i].x = catched[i].x-13;
-			}
-			if(rtHeld) {
-				catched[i].x = catched[i].x+13;
-			}
-		}
-		// draw the updates to stage:
-		stage.update();
+		controller.interaction();
+		controller.update();
+		
 	}
 	</script>
 </head>
