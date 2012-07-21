@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/State.js"></script>
 	<script>
+	
 	var canvas;
 	var stage;
 	var factory;
@@ -50,7 +51,9 @@
 	document.onkeyup = handleKeyUp;
 	
 	function init() {
+	
 		canvas = document.getElementById("testCanvas");
+		console.log("a");
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new createjs.Stage(canvas);
 		factory = new IngredientFactory();
