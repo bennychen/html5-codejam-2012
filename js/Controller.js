@@ -129,7 +129,7 @@ Controller.prototype.update = function()
 		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE - 1 )
 		{
 			this.stageOffsetY = utils.lerp( this.stageOffsetY, totalHeight - gapToBottomBorder, Ticker.getInterval() / 100 );
-			this.curControlIngredientIndex = i;
+			//this.curControlIngredientIndex = i;
 		}
 		ingredient.y = canvasHeight - totalHeight;
 	}
