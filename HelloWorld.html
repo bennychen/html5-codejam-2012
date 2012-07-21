@@ -3,9 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Sky Burger</title>
-
+	
+	<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 
+	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  
 	<script src="http://code.createjs.com/easeljs-0.4.2.min.js"></script>
 	<script src="http://code.createjs.com/tweenjs-0.2.0.min.js"></script>
 	<script src="http://code.createjs.com/soundjs-0.2.0.min.js"></script>
@@ -23,7 +28,6 @@
 	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
-	</script>
 	<script>
 	
 	var canvas;
@@ -73,6 +77,30 @@
 	
 	<div id="canvasHolder">
 		<canvas id="mainCanvas" width="980" height="620"></canvas>
+		<div id="inGameMenu">
+				<div id="inGameMenu-leftMask"></div>
+				<div id="inGameMenu-orderName"></div>
+				<ul id="inGameMenu-order">
+					<li id="breadTop"><img src="img/burger/top.png" /></li>
+					<li id="onion"><img src="img/burger/onion.png" /><span id="onionNum">0</span></li>
+					<li id="cheese"><img src="img/burger/cheese.png" /><span id="cheeseNum">0</span></li>
+					<li id="lettuce"><img src="img/burger/lettuce.png" /><span id="lettuceNum">0</span></li>
+					<li id="egg"><img src="img/burger/egg.png" /><span id="eggNum">0</span></li>
+					<li id="meat"><img src="img/burger/meat.png" /><span id="meatNum">0</span></li>
+					<li id="tomato"><img src="img/burger/tomato.png" /><span id="tomatoNum">0</li>
+					<li id="breadBottom"><img src="img/burger/bottom.png" /></li>
+
+				</ul>
+				<div id="inGameMenu-Summary">
+				<p id="total">$70</p>
+				<p id="tip">Tip:3%</p>
+				</div>
+				<hr />
+			</div>
 	</div>
+	
+
+
+
 </body>
 </html>

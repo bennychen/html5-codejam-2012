@@ -14,9 +14,20 @@ function OrderSummary( ){
 	
 	this.ingredientCountToGo={}
 	
+	//hide all ingredient
+	for( var i=0; i<IngredientTypes.length; i++) {
+		var type = IngredientTypes[i];
+		$('#' + type).hide();
+		
+	}
+	//show ingredient by order	
 	for(var i=0; i<level.order.ingredients.length; i++){
 		this.ingredientCountToGo[level.order.ingredients[i].type] = 
 			level.order.ingredients[i].num;
+			
+		$('#' + level.order.ingredients[i].type).show();	
+		$('#' + level.order.ingredients[i].type + 'Num').text( this.ingredientCountToGo[level.order.ingredients[i].type] );
+
 	}
 	
 	this.subTotal = 0;
@@ -63,13 +74,12 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 
 OrderSummary.prototype.render = function()
 {
-	var goal = document.getElementById("goal");
-	goal.innerHTML = '';
+
 	for( var i=0; i<IngredientTypes.length; i++) {
 		var type = IngredientTypes[i];
 		if(this.ingredientCountToGo[type] != undefined)
 		{
-			goal.innerHTML += type + " : " + this.ingredientCountToGo[type] + '<br>';
+			$('#' + type + 'Num').text( this.ingredientCountToGo[type] );
 		}
 		
 	}

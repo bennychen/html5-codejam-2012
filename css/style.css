@@ -309,7 +309,57 @@ body {
 	height:620px;
 	padding:10px;
 	box-shadow:1px 1px 5px #000;
+	position: relative;
+	z-index: 1;
 }
 #mainCanvas {
 	background-color:#000;
+}
+/* ========== inGame UI style ==================*/
+
+#inGameMenu {
+	position: absolute;
+	left: 10px;
+	top:10px;
+	height: 620px;
+	width: 15%;
+	font-family: "Rock Salt";
+	color: #FFF;
+}
+#inGameMenu-leftMask {
+	position: absolute;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-color:#000;
+	opacity: 0.5;
+}
+
+#inGameMenu-order li,#inGameMenu-order{
+	list-style: none;
+	padding-left:0;	
+}
+#inGameMenu-order {
+	position: relative;
+	text-align: left;
+	padding-top:20px;
+	padding-left:35px;
+}
+#inGameMenu-order li {
+	padding:5px 0;
+}
+#inGameMenu hr {
+}
+#inGameMenu-order li img {
+	width:60px;
+	height:auto;
+	padding-right: 20px;
+}
+#inGameMenu-Summary {
+	position: relative;
+}
+#total {
+	font-size:1.5em;
 }
