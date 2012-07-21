@@ -11,15 +11,7 @@ Controller.canvas;
 Controller.catchedIngredients;
 Controller.player;
 Controller.timerId;
-
-Controller.prototype.isGameOver = function(ingredient)
-{
-	if(ingredient.getType() == 'top')
-	{
-		console.log("game over");	
-	} 
-	
-}
+Controller.onCatchIngredient;
 
 Controller.prototype.startGame = function()
 {
@@ -50,6 +42,11 @@ Controller.prototype.removePlayer = function()
 	this.player=null;
 }
 
+Controller.prototype.setOnCatchIngredient = function( onCatchIngredient )
+{
+	this.onCatchIngredient = onCatchIngredient;
+}
+
 Controller.prototype.addIngredient = function()
 {
 	var ingredient = factory.CreateRandomIngredient();
@@ -61,7 +58,6 @@ Controller.prototype.destroyIngredient = function(ingredient)
 {
 	return this.stage.removeChild(ingredient);
 }
-
 
 Controller.prototype.interaction = function()
 {
@@ -80,7 +76,14 @@ Controller.prototype.interaction = function()
 				ingredient.x = this.player.x;
 				ingredient.y = this.player.y;
 				this.catchedIngredients.push(ingredient);
+<<<<<<< HEAD
 				orderSummary.addIngredient(ingredient);
+=======
+				if ( this.onCatchIngredient != null )
+				{
+					this.onCatchIngredient( ingredient );
+				}
+>>>>>>> Added onCatchIngredient event.
 			}
 			else
 			{
@@ -116,9 +119,13 @@ Controller.prototype.update = function()
 	var totalHeight=0;
 	for(var i=0; i<this.catchedIngredients.length; i++) {
 		var ingredient = this.catchedIngredients[i];
+<<<<<<< HEAD
 		this.isGameOver(ingredient);	
 		totalHeight += ingredient.height;
 		ingredient.y = h-totalHeight;
+=======
+		ingredient.y = h-ingredient.height*(i+1);
+>>>>>>> Added onCatchIngredient event.
 		if(lfHeld) {
 			ingredient.x = ingredient.x-MOVE_PLAYER_SPEED;
 		}

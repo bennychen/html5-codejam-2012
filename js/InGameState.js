@@ -8,6 +8,7 @@ function OnEnterInGameState()
 	
 	orderSummary = new OrderSummary();
 	
+	controller.setOnCatchIngredient( OnCatchIngredient )
 	controller.startGame();
 	//start game timer
 	
@@ -48,6 +49,19 @@ function tick() {
 	controller.interaction();
 	controller.update();
 	
+}
+
+function OnCatchIngredient( ingredient )
+{
+	console.log( "catch new ingredient" )
+	if(ingredient.getType() == 'top')
+	{
+		console.log("game over");	
+	} 
+	else
+	{
+		//TODO: update tips and update ingredient count in GUI
+	}
 }
 
 var InGameState = new State( OnEnterInGameState, OnExitInGameState );
