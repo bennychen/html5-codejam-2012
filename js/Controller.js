@@ -1,5 +1,5 @@
 var MOVE_PLAYER_SPEED = 13
-var MAX_INGREDIENTS_ON_STAGE = 5
+var MAX_INGREDIENTS_ON_STAGE = 8
 
 function Controller( stage, canvas ) {
 	this.stage = stage;
