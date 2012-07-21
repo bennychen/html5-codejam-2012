@@ -7,6 +7,7 @@
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
+<<<<<<< HEAD
 	<script src="http://code.createjs.com/easeljs-0.4.2.min.js"></script>
 	<script src="http://code.createjs.com/preloadjs-0.1.0.min.js"></script>
 	<script src="http://code.createjs.com/soundjs-0.2.0.min.js"></script>
@@ -16,13 +17,26 @@
 
 	<script src="js/Ingredient.js"></script>
 	<script src="js/State.js"></script>
+=======
+	<script type="text/javascript" src="js/Ingredient.js"></script>
+<<<<<<< HEAD
+	<script type="text/javascript" src="js/IngredientFactory.js"></script>
+	<script type="text/javascript" src="js/Controller.js"></script>
+=======
+
+	<script type="text/javascript" src="js/State.js"></script>
+>>>>>>> 0048a694287838c9d96d418cfe82fd6bae9c77ae
+>>>>>>> 9143b95b8450fd1313e15cc5fe5ca2d899b81942
 	<script>
 	var canvas;
 	var stage;
 	var text;
-	var ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce", "top"];
-	var base;
 	
+	var factory;
+	var controller;
+	var base;   // the buttom, player!
+ 	
+ 	
 	var KEYCODE_ENTER = 13;		//usefull keycode
 	var KEYCODE_SPACE = 32;		//usefull keycode
 	var KEYCODE_UP = 38;		//usefull keycode
@@ -46,8 +60,17 @@
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new Stage(canvas);
 
+<<<<<<< HEAD
 		text = new Text("Sky Burger", "36px Arial", "#777");
+=======
+		factory = new IngredientFactory();
+		
+		text = new createjs.Text("Sky Burger", "36px Arial", "#777");
+>>>>>>> 9143b95b8450fd1313e15cc5fe5ca2d899b81942
 		stage.addChild(text);
+		controller = new Controller(stage);
+		setInterval(controller.addIngredient, 2000);
+		
 		text.x = 360;
 		text.y = 200;
 
@@ -102,6 +125,7 @@
 		}
 	}
 	
+	
 	//reset all game logic
 	function restart() {
 		//hide anything on stage and show the score
@@ -109,14 +133,6 @@
 
 		//ensure stage is blank and add the ship
 		stage.clear();
-		
-		//create flowers
-		for(var i=0; i<10; i++ ){
-			var ingredient = new Ingredient(ingredients[Math.random()*ingredients.length|0]);
-			ingredient.x = Math.random() * canvas.width % canvas.width;
-			ingredient.y =  - i*100;
-			stage.addChild(ingredient);
-		}
 		
 		
 		stage.addChild(base);
@@ -158,10 +174,10 @@
 		// iterate through all the children and move them according to their velocity:
 		for (var i=0; i<l; i++) {
 			var ingredient = stage.getChildAt(i);
-			if( !ingredient.catched ){ 
+			if( ingredient != undefined && !ingredient.catched ){ 
 				ingredient.y= (ingredient.y+ingredient.vy);
 				if(ingredient.y>h) {
-					ingredient.y = -900;
+					controller.destroyIngredient(ingredient);
 				}
 			}
 		}
