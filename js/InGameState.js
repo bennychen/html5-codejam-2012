@@ -48,7 +48,7 @@ function tick() {
 
 	controller.interaction();
 	controller.update();
-	
+	orderSummary.render();
 }
 
 function OnCatchIngredient( ingredient )

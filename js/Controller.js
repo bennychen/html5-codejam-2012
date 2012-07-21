@@ -115,7 +115,10 @@ Controller.prototype.update = function()
 	var totalHeight=0;
 	for(var i=0; i<this.catchedIngredients.length; i++) {
 		var ingredient = this.catchedIngredients[i];
+
+		this.isGameOver(ingredient);	
 		totalHeight += ingredient.height;
+
 		ingredient.y = h-totalHeight;
 		ingredient.y = h-ingredient.height*(i+1);
 		if(lfHeld) {

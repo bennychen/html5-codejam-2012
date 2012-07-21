@@ -1,12 +1,13 @@
 var IngredientTypes = ["onion", "tomato", "egg", "cheese", "meat", "lettuce"];
 
-var IngredientPrice = [
-	{ onion:0.69 },
-	{ tomato: 0.57 },
-	{ egg:0.57 },
-	{ meat:0.86 },
-	{ lettuce:0.57 }
-];
+var IngredientPrice = {
+	onion:0.69,
+	tomato: 0.57,
+	egg:0.57,
+	meat:0.86 ,
+	lettuce:0.57 ,
+	cheese:1.02
+};
 
 var easyOrders = [];
 var normalOrders = [];

@@ -8,11 +8,9 @@ function OnEnterMenuState()
 	 	 
 	 menuStart.x = 350;
 	 menuStart.y = 320;
-	 
 	 stage.addChild(menuStart);
+	 menuStart.onPress = handleStartPress;
 	 stage.update();
-	 
-	 document.onclick = handleMenuClick;
 	 
 }
 
@@ -20,11 +18,10 @@ function OnExitMenuState()
 {
 	stage.removeAllChildren();
 	stage.update();
-	document.onclick = null;
 }
 
 //allow for WASD and arrow control scheme
-function handleMenuClick(e) {
+function handleStartPress(event) {
 	//cross browser issues exist
 	SM.SetStateByName( "ingame" );
 }

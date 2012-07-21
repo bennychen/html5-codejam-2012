@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/State.js"></script>
 	<script type="text/javascript" src="js/MenuState.js"></script>
+	<script type="text/javascript" src="js/FailureState.js"></script>
 	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
@@ -47,7 +48,9 @@
 
 		SM.RegisterState( "ingame", InGameState );
 		SM.RegisterState( "menu", MenuState );
-		SM.SetStateByName( "ingame" );
+		SM.RegisterState( "failure", FailureState );
+		
+		SM.SetStateByName( "menu" );
 	}
 	
 	
@@ -59,7 +62,10 @@
 
 	<header id="header" class="EaselJS">
 	</header>
-
+	<div id="goal">
+	</div>
+	
+	
 	<div id="canvasHolder">
 		<canvas id="mainCanvas" width="980" height="620"></canvas>
 	</div>

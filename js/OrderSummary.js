@@ -19,30 +19,60 @@ function OrderSummary( ){
 			level.order.ingredients[i].num;
 	}
 	
+	this.subTotal = 0;
 }
 
 OrderSummary.ingredientCount;
 OrderSummary.tips;
 OrderSummary.ingredientCountToGo;
+OrderSummary.subTotal;
 
-OrderSummary.prototype.computeSubtotal = function()
+OrderSummary.prototype.addTips = function()
 {
+	this.tips += 1;
 }
 
-OrderSummary.prototype.computeTip = function()
-{
+OrderSummary.prototype.subtractTips = function()
+{	
+	this.tips -= 3;
+	if(this.tips < 0) {
+		this.tips = 0;
+	}
 }
 
 OrderSummary.prototype.addIngredient = function(ingredient)
 {
-	var count = parseInt(this.ingredientCount[ingredient.getType()]);
-	this.ingredientCount[ingredient.getType()] = count+1;
+	var type = ingredient.getType();
+	var count = parseInt(this.ingredientCount[type]);
+	this.ingredientCount[type] += 1;
 	
-	if(this.ingredientCountToGo[ingredient.getType()] != undefined) {
-		this.ingredientCountToGo[ingredient.getType()]  -= 1;
+	if(this.ingredientCountToGo[type] != undefined) {
+		var togoCount = this.ingredientCountToGo[type];
+		togoCount -= 1;
+		if(togoCount < 0) {
+			this.substractTips();
+			togoCount = 0;
+		}
+		this.ingredientCountToGo[type] = togoCount;
 	}
-	// see if the current ingredient is in the level;
-	
+	else {
+		this.subtractTips();
+	}
+	this.subTotal += IngredientPrice[type];
+}
+
+OrderSummary.prototype.render = function()
+{
+	var goal = document.getElementById("goal");
+	goal.innerHTML = '';
+	for( var i=0; i<IngredientTypes.length; i++) {
+		var type = IngredientTypes[i];
+		if(this.ingredientCountToGo[type] != undefined)
+		{
+			goal.innerHTML += type + " : " + this.ingredientCountToGo[type] + '<br>';
+		}
+		
+	}
 }
 
 var orderSummary;
