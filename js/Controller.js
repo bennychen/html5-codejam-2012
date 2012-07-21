@@ -1,9 +1,11 @@
 var MOVE_PLAYER_SPEED = 13
+var MAX_INGREDIENTS_ON_STAGE = 6
 
 function Controller( stage, canvas ) {
 	this.stage = stage;
 	this.canvas = canvas;
 	this.catchedIngredients = [];
+	this.stageOffsetY = 0;
 }
 
 Controller.stage;
@@ -11,6 +13,7 @@ Controller.canvas;
 Controller.catchedIngredients;
 Controller.player;
 Controller.timerId;
+Controller.stageOffsetY;
 Controller.onCatchIngredient;
 
 Controller.prototype.startGame = function()
@@ -76,6 +79,7 @@ Controller.prototype.interaction = function()
 				ingredient.x = this.player.x;
 				ingredient.y = this.player.y;
 				this.catchedIngredients.push(ingredient);
+
 				if ( this.onCatchIngredient != null )
 				{
 					this.onCatchIngredient( ingredient );
@@ -97,7 +101,7 @@ Controller.prototype.interaction = function()
 Controller.prototype.update = function()
 {
 	var w = this.canvas.width;
-	var h = this.canvas.height;
+	var canvasHeight = this.canvas.height;
 	var l = this.stage.getNumChildren();
 	
 	// iterate through all the children and move them according to their velocity:
@@ -106,22 +110,29 @@ Controller.prototype.update = function()
 		if( ingredient != undefined && !ingredient.catched )
 		{ 
 			ingredient.y= (ingredient.y+ingredient.vy);
-			if(ingredient.y>h) {
+			if(ingredient.y>canvasHeight) {
 				this.destroyIngredient(ingredient);
 			}
 		}
 	}
 	
-	var totalHeight=0;
+	var gapToBottomBorder = this.player.height / 2
+	var totalHeight = gapToBottomBorder;
 	for(var i=0; i<this.catchedIngredients.length; i++) 
 	{
 		var ingredient = this.catchedIngredients[i];
-
+		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE )
+		{
+			this.stageOffsetY = totalHeight - gapToBottomBorder;
+		}
+		ingredient.y = canvasHeight - totalHeight;
 		totalHeight += ingredient.height;
-
-		ingredient.y = h-totalHeight;
 	}
-	this.player.y = h-this.player.height;
+	for(var i=0; i<this.catchedIngredients.length; i++) 
+	{
+		var ingredient = this.catchedIngredients[i];
+		ingredient.y += this.stageOffsetY;
+	}
 	
 	if(lfHeld) 
 	{
