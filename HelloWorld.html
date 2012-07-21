@@ -24,20 +24,11 @@
 	var factory;
 	var controller;
  	
-	var KEYCODE_ENTER = 13;		//usefull keycode
-	var KEYCODE_SPACE = 32;		//usefull keycode
-	var KEYCODE_UP = 38;		//usefull keycode
 	var KEYCODE_LEFT = 37;		//usefull keycode
 	var KEYCODE_RIGHT = 39;		//usefull keycode
-	var KEYCODE_W = 87;			//usefull keycode
-	var KEYCODE_A = 65;			//usefull keycode
-	var KEYCODE_D = 68;			//usefull keycode
 	
 	var lfHeld;
 	var rtHeld;
-	
-	
-
 	
 	function init() {
 	
@@ -47,20 +38,12 @@
 		stage = new Stage(canvas);
 		factory = new IngredientFactory();
 		controller = new Controller(stage, canvas);
-		
 
 		SM.RegisterState( "ingame", InGameState );
-
 		SM.SetStateByName( "ingame" );
 	}
 	
-	function abs(lvalue, rvalue)
-	{
-		if(lvalue-rvalue > 0)
-			return (lvalue-rvalue);
-		else 
-			return rvalue-lvalue;
-	}
+	
 
 	</script>
 </head>

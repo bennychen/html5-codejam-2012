@@ -4,7 +4,7 @@ function OnEnterInGameState()
 	document.onkeydown = handleKeyDown;
 	document.onkeyup = handleKeyUp;
 	
-	console.log("OnEnterInGameState");
+	controller.startGame();
 	//start game timer
 	
 	Ticker.addListener(window);
@@ -15,7 +15,6 @@ function OnExitInGameState()
 	document.onkeydown = null;
 	document.onkeyup = null;
 	
-	console.log("OnExitInGameState");
 	Ticker.removeListener(window)
 }
 
@@ -41,7 +40,7 @@ function OnExitInGameState()
 	
 		
 	function tick() {
-console.log("tick");
+
 		controller.interaction();
 		controller.update();
 		
