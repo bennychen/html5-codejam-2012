@@ -22,13 +22,18 @@
 	<!-- We also provide hosted minified versions of all CreateJS libraries.
 	  http://code.createjs.com -->
 	<script type="text/javascript" src="js/Ingredient.js"></script>
+	<script type="text/javascript" src="js/IngredientFactory.js"></script>
+	<script type="text/javascript" src="js/Controller.js"></script>
 	<script>
 	var canvas;
 	var stage;
 	var text;
-	var ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce", "top"];
-	var base;
 	
+	var factory;
+	var controller;
+	var base;   // the buttom, player!
+ 	
+ 	
 	var KEYCODE_ENTER = 13;		//usefull keycode
 	var KEYCODE_SPACE = 32;		//usefull keycode
 	var KEYCODE_UP = 38;		//usefull keycode
@@ -52,8 +57,13 @@
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new createjs.Stage(canvas);
 
+		factory = new IngredientFactory();
+		
 		text = new createjs.Text("Sky Burger", "36px Arial", "#777");
 		stage.addChild(text);
+		controller = new Controller(stage);
+		setInterval(controller.addIngredient, 2000);
+		
 		text.x = 360;
 		text.y = 200;
 
@@ -95,6 +105,7 @@
 		}
 	}
 	
+	
 	//reset all game logic
 	function restart() {
 		//hide anything on stage and show the score
@@ -102,14 +113,6 @@
 
 		//ensure stage is blank and add the ship
 		stage.clear();
-		
-		//create flowers
-		for(var i=0; i<10; i++ ){
-			var ingredient = new Ingredient(ingredients[Math.random()*ingredients.length|0]);
-			ingredient.x = Math.random() * canvas.width % canvas.width;
-			ingredient.y =  - i*100;
-			stage.addChild(ingredient);
-		}
 		
 		
 		stage.addChild(base);
@@ -151,10 +154,10 @@
 		// iterate through all the children and move them according to their velocity:
 		for (var i=0; i<l; i++) {
 			var ingredient = stage.getChildAt(i);
-			if( !ingredient.catched ){ 
+			if( ingredient != undefined && !ingredient.catched ){ 
 				ingredient.y= (ingredient.y+ingredient.vy);
 				if(ingredient.y>h) {
-					ingredient.y = -900;
+					controller.destroyIngredient(ingredient);
 				}
 			}
 		}
