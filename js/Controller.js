@@ -10,11 +10,22 @@ Controller.stage;
 Controller.canvas;
 Controller.catchedIngredients;
 Controller.player;
+Controller.timerId;
 
 Controller.prototype.startGame = function()
 {
 	this.addPlayer();
-	setInterval(this.addIngredient, 2000);
+	this.timerId = setInterval(this.addIngredient, 2000);
+}
+
+Controller.prototype.stopGame = function()
+{
+	clearInterval(this.timerId);
+	this.timerId = null;
+	this.player = null;
+	this.catchedIngredients = [];
+	this.stage.removeAllChildren();
+	this.stage.clear();
 }
 
 Controller.prototype.addPlayer = function()
@@ -23,6 +34,13 @@ Controller.prototype.addPlayer = function()
 	this.catchedIngredients.push(this.player);
 	this.stage.addChild(this.player);
 }
+
+Controller.prototype.removePlayer = function()
+{
+	this.stage.removeChild(this.player);
+	this.player=null;
+}
+
 Controller.prototype.addIngredient = function()
 {
 	var ingredient = factory.CreateRandomIngredient();
@@ -38,28 +56,17 @@ Controller.prototype.destroyIngredient = function(ingredient)
 
 Controller.prototype.interaction = function()
 {
+	
 	var l = this.stage.getNumChildren();
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
-		if( (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && 
-			!ingredient.catched && !ingredient.dropped ) 
-		{
-			var xDistance = utils.abs(ingredient.x, this.player.x) 
-			if ( xDistance < 20 )
-			{
-				ingredient.catched = true;
-				ingredient.x = this.player.x;
-				ingredient.y = this.player.y;
-				this.catchedIngredients.push(ingredient);
-			}
-			else
-			{
-				ingredient.dropped = true;
-				if ( xDistance < 100 )
-				{
-					console.log( "bread is scrached with burger, play anim here" )
-				}
-			}
+	
+		if( utils.abs(ingredient.x, this.player.x) < 20 && (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
+			ingredient.catched = true;
+			ingredient.x = this.player.x;
+			ingredient.y = this.player.y;
+			this.catchedIngredients.push(ingredient);
+			
 		}
 	}
 }
