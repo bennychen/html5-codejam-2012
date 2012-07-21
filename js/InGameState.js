@@ -4,8 +4,10 @@ function OnEnterInGameState()
 	document.onkeydown = handleKeyDown;
 	document.onkeyup = handleKeyUp;
 	
-		//start game timer
-		createjs.Ticker.addListener(window);
+	console.log("OnEnterInGameState");
+	//start game timer
+	
+	Ticker.addListener(window);
 }
 
 function OnExitInGameState()
@@ -13,7 +15,8 @@ function OnExitInGameState()
 	document.onkeydown = null;
 	document.onkeyup = null;
 	
-	createjs.Ticker.removeListener(window)
+	console.log("OnExitInGameState");
+	Ticker.removeListener(window)
 }
 
 	
@@ -38,11 +41,11 @@ function OnExitInGameState()
 	
 		
 	function tick() {
-
+console.log("tick");
 		controller.interaction();
 		controller.update();
 		
 	}
 
-var InGameState = State( OnEnterInGameState, OnExitInGameState );
+var InGameState = new State( OnEnterInGameState, OnExitInGameState );
 
