@@ -1,7 +1,7 @@
 var IngredientTypes = ["onion", "tomato", "egg", "cheese", "meat", "lettuce"];
 
 var IngredientPrice = [
-{ onion:0.69 },
+	{ onion:0.69 },
 	{ tomato: 0.57 },
 	{ egg:0.57 },
 	{ meat:0.86 },
@@ -134,14 +134,15 @@ function Level() {
 Level.prototype.generateNextLevel = function() {
 	this.levelNum++;
 	
-	if ( levelNum < 3 ) {
-
 	if ( this.levelNum < 3 ) {
-		this.order = getOrder('easy');
-	} else if ( 0 == (levelNum % 10))  {
-		this.order = getOrder('hard');
-	} else {
-		this.order = getOrder('normal');
+
+		if ( this.levelNum < 3 ) {
+			this.order = getOrder('easy');
+		} else if ( 0 == (this.levelNum % 10))  {
+			this.order = getOrder('hard');
+		} else {
+			this.order = getOrder('normal');
+		}
 	}
 	
 }

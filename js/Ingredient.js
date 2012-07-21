@@ -10,7 +10,8 @@
 		this.height = height;
 	}
 
-	Ingredient.prototype.height;
+	Ingredient.prototype.height = function()
+	{
 		this.type = type;
 	}
 
