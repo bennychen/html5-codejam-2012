@@ -22,6 +22,8 @@ function OnExitMenuState()
 
 //allow for WASD and arrow control scheme
 function handleStartPress(event) {
+	var menuStart = event.target;
+	stage.removeChild(menuStart);
 	//cross browser issues exist
 	SM.SetStateByName( "ingame" );
 }

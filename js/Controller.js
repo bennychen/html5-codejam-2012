@@ -117,7 +117,6 @@ Controller.prototype.update = function()
 	{
 		var ingredient = this.catchedIngredients[i];
 
-		this.isGameOver(ingredient);	
 		totalHeight += ingredient.height;
 
 		ingredient.y = h-totalHeight;
