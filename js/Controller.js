@@ -19,7 +19,7 @@ Controller.prototype.addPlayer = function()
 {
 	this.player = factory.CreatePlayer();
 	this.catchedIngredients.push(this.player);
-	
+	this.stage.addChild(this.player);
 }
 Controller.prototype.addIngredient = function()
 {
@@ -41,8 +41,8 @@ Controller.prototype.interaction = function()
 		var ingredient = this.stage.getChildAt(i);
 		if( abs(ingredient.x, this.player.x) < 20 && (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
 			ingredient.catched = true;
-			ingredient.x = base.x;
-			ingredient.y = base.y;
+			ingredient.x = this.player.x;
+			ingredient.y = this.player.y;
 			this.catchedIngredients.push(ingredient);
 			
 		}
@@ -66,7 +66,7 @@ Controller.prototype.update = function()
 		}
 	}
 	for(var i=0; i<this.catchedIngredients.length; i++) {
-		this.catchedIngredients[i].y = h-34*(i+1);
+		this.catchedIngredients[i].y = h-35*(i+1);
 		if(lfHeld) {
 			this.catchedIngredients[i].x = this.catchedIngredients[i].x-13;
 		}
@@ -74,6 +74,8 @@ Controller.prototype.update = function()
 			this.catchedIngredients[i].x = this.catchedIngredients[i].x+13;
 		}
 	}
+	this.player.y = h-35;
+	
 	// draw the updates to stage:
 	this.stage.update();
 }

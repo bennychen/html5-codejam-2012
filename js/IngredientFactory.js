@@ -16,9 +16,9 @@
 	
 	IngredientFactory.prototype.CreatePlayer = function()
 	{
-		var player = new Ingredient('bottom');
+		var player = new Ingredient("bottom");
 		player.x = canvas.width/2;
-		player.y = canvas.height;
+		player.y = canvas.height - 35;
 		player.catched = true;
 		return player;
 	}

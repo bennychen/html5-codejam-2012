@@ -28,7 +28,6 @@
 	<script>
 	var canvas;
 	var stage;
-	var text;
 	var factory;
 	var controller;
 	var base;   // the buttom, player!
@@ -56,12 +55,9 @@
 		canvas = document.getElementById("testCanvas");
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new createjs.Stage(canvas);
-
 		factory = new IngredientFactory();
 		controller = new Controller(stage, canvas);
-		
 		controller.startGame();
-		
 		canvas.onclick = handleClick;
 
 		function onEnterMenu()
@@ -81,8 +77,6 @@
 	function handleClick() {
 		//prevent extra clicks and hide text
 		canvas.onclick = null;
-		stage.removeChild(text);
-
 		restart();
 	}
 	
@@ -115,7 +109,6 @@
 		stage.clear();
 		
 		
-		stage.addChild(base);
 		//start game timer
 		createjs.Ticker.addListener(window);
 		
