@@ -135,14 +135,11 @@ Level.prototype.generateNextLevel = function() {
 	this.levelNum++;
 	
 	if ( this.levelNum < 3 ) {
-
-		if ( this.levelNum < 3 ) {
-			this.order = getOrder('easy');
-		} else if ( 0 == (this.levelNum % 10))  {
-			this.order = getOrder('hard');
-		} else {
-			this.order = getOrder('normal');
-		}
+		this.order = getOrder('easy');
+	} else if ( 0 == (this.levelNum % 10))  {
+		this.order = getOrder('hard');
+	} else {
+		this.order = getOrder('normal');
 	}
 	
 }
