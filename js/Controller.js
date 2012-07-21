@@ -120,7 +120,6 @@ Controller.prototype.update = function()
 		totalHeight += ingredient.height;
 
 		ingredient.y = h-totalHeight;
-		ingredient.y = h-ingredient.height*(i+1);
 	}
 	
 	if(lfHeld) 
