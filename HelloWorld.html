@@ -36,10 +36,7 @@
 	var rtHeld;
 	
 	
-	
-	//register key functions
-	document.onkeydown = handleKeyDown;
-	document.onkeyup = handleKeyUp;
+
 	
 	function init() {
 	
@@ -52,18 +49,9 @@
 		controller.startGame();
 		canvas.onclick = handleClick;
 
-		function onEnterMenu()
-		{
-			console.log( "enter menu" );
-		}
-		function onExitMenu()
-		{
-			console.log( "exit menu" );
-		}
-		var menuState = new State( onEnterMenu, onExitMenu );
-		SM.RegisterState( "menu", menuState );
+		SM.RegisterState( "ingame", InGameState );
 
-		SM.SetStateByName( "menu" );
+		SM.SetStateByName( "ingame" );
 	}
 	
 	function handleClick() {
@@ -71,25 +59,7 @@
 		canvas.onclick = null;
 		restart();
 	}
-	
-	//allow for WASD and arrow control scheme
-	function handleKeyDown(e) {
-		//cross browser issues exist
-		if(!e){ var e = window.event; }
-		switch(e.keyCode) {
-			case KEYCODE_LEFT:	lfHeld = true; return false;
-			case KEYCODE_RIGHT: rtHeld = true; return false;
-		}
-	}
 
-	function handleKeyUp(e) {
-		//cross browser issues exist
-		if(!e){ var e = window.event; }
-		switch(e.keyCode) {
-			case KEYCODE_LEFT:	lfHeld = false; break;
-			case KEYCODE_RIGHT: rtHeld = false; break;
-		}
-	}
 	
 	
 	//reset all game logic
@@ -101,9 +71,6 @@
 		stage.clear();
 		
 		
-		//start game timer
-		Ticker.addListener(window);
-		
 		
 	}
 	
@@ -114,13 +81,7 @@
 		else 
 			return rvalue-lvalue;
 	}
-	
-	function tick() {
 
-		controller.interaction();
-		controller.update();
-		
-	}
 	</script>
 </head>
 	
