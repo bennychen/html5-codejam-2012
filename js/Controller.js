@@ -76,14 +76,10 @@ Controller.prototype.interaction = function()
 				ingredient.x = this.player.x;
 				ingredient.y = this.player.y;
 				this.catchedIngredients.push(ingredient);
-<<<<<<< HEAD
-				orderSummary.addIngredient(ingredient);
-=======
 				if ( this.onCatchIngredient != null )
 				{
 					this.onCatchIngredient( ingredient );
 				}
->>>>>>> Added onCatchIngredient event.
 			}
 			else
 			{
@@ -119,13 +115,10 @@ Controller.prototype.update = function()
 	var totalHeight=0;
 	for(var i=0; i<this.catchedIngredients.length; i++) {
 		var ingredient = this.catchedIngredients[i];
-<<<<<<< HEAD
 		this.isGameOver(ingredient);	
 		totalHeight += ingredient.height;
 		ingredient.y = h-totalHeight;
-=======
 		ingredient.y = h-ingredient.height*(i+1);
->>>>>>> Added onCatchIngredient event.
 		if(lfHeld) {
 			ingredient.x = ingredient.x-MOVE_PLAYER_SPEED;
 		}

@@ -54,6 +54,7 @@ function tick() {
 function OnCatchIngredient( ingredient )
 {
 	console.log( "catch new ingredient" )
+	orderSummary.addIngredient(ingredient);
 	if(ingredient.getType() == 'top')
 	{
 		console.log("game over");	
