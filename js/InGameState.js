@@ -4,6 +4,8 @@ function OnEnterInGameState()
 	document.onkeydown = handleKeyDown;
 	document.onkeyup = handleKeyUp;
 	
+	initLevel();
+	
 	controller.startGame();
 	//start game timer
 	
@@ -15,6 +17,7 @@ function OnExitInGameState()
 	document.onkeydown = null;
 	document.onkeyup = null;
 	
+	controller.stopGame();
 	Ticker.removeListener(window)
 }
 

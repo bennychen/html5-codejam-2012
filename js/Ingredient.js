@@ -11,6 +11,11 @@
 	}
 
 	Ingredient.prototype.height;
+		this.type = type;
+	}
+
+	Ingredient.prototype.height;
+	Ingredient.prototype.type;
 	Ingredient.prototype = new Container();
 	Ingredient.prototype.vx = 0;
 	Ingredient.prototype.vy = 10;
@@ -32,6 +37,12 @@
 	{
 		return this.height;
 	}
+
+	Ingredient.prototype.getType = function()
+	{
+		return this.type;
+	}
+
 	window.Ingredient = Ingredient;
 
 }(window));
