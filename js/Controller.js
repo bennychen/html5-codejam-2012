@@ -1,5 +1,5 @@
 var MOVE_PLAYER_SPEED = 13
-var MAX_INGREDIENTS_ON_STAGE = 6
+var MAX_INGREDIENTS_ON_STAGE = 3
 
 function Controller( stage, canvas ) {
 	this.stage = stage;
@@ -14,12 +14,14 @@ Controller.catchedIngredients;
 Controller.player;
 Controller.timerId;
 Controller.stageOffsetY;
+Controller.curControlIngredientIndex;
 Controller.onCatchIngredient;
 
 Controller.prototype.startGame = function()
 {
 	this.addPlayer();
 	this.timerId = setInterval(this.addIngredient, 2000);
+	this.curControlIngredientIndex = 0;
 }
 
 Controller.prototype.stopGame = function()
@@ -104,7 +106,7 @@ Controller.prototype.update = function()
 	var canvasHeight = this.canvas.height;
 	var l = this.stage.getNumChildren();
 	
-	// iterate through all the children and move them according to their velocity:
+	// destory useless ingredients 
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
 		if( ingredient != undefined && !ingredient.catched )
@@ -116,6 +118,7 @@ Controller.prototype.update = function()
 		}
 	}
 	
+	// move ingredients according to their velocity
 	var gapToBottomBorder = this.player.height / 2
 	var totalHeight = gapToBottomBorder;
 	for(var i=0; i<this.catchedIngredients.length; i++) 
@@ -124,6 +127,7 @@ Controller.prototype.update = function()
 		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE )
 		{
 			this.stageOffsetY = totalHeight - gapToBottomBorder;
+			this.curControlIngredientIndex = i;
 		}
 		ingredient.y = canvasHeight - totalHeight;
 		totalHeight += ingredient.height;
@@ -134,23 +138,24 @@ Controller.prototype.update = function()
 		ingredient.y += this.stageOffsetY;
 	}
 	
+	var curControlIngredient = this.catchedIngredients[this.curControlIngredientIndex]
 	if(lfHeld) 
 	{
-		this.player.x = this.player.x-MOVE_PLAYER_SPEED;
+		curControlIngredient.x = curControlIngredient.x - MOVE_PLAYER_SPEED;
 	}
 	if(rtHeld) 
 	{
-		this.player.x = this.player.x+MOVE_PLAYER_SPEED;
+		curControlIngredient.x = curControlIngredient.x + MOVE_PLAYER_SPEED;
 	}
-	this.player.x = utils.clamp( this.player.x, BOUND_LEFT, BOUND_RIGHT );
+	curControlIngredient.x = utils.clamp( curControlIngredient.x, BOUND_LEFT, BOUND_RIGHT );
 
-	var lastIngredient = this.player;
-	for(var i = 1; i < this.catchedIngredients.length; i++)
+	var lastIngredient = curControlIngredient;
+	for(var i = this.curControlIngredientIndex + 1; i < this.catchedIngredients.length; i++)
 	{
 		var ingredient = this.catchedIngredients[i];
 		ingredient.x = utils.lerp( ingredient.x, lastIngredient.x, 
-				Ticker.getInterval() / 100 )
-		lastIngredient = ingredient
+				Ticker.getInterval() / 100 );
+		lastIngredient = ingredient;
 	}
 	
 	// draw the updates to stage:
