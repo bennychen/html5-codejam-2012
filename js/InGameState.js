@@ -6,6 +6,8 @@ function OnEnterInGameState()
 	
 	initLevel();
 	
+	orderSummary = new OrderSummary();
+	
 	controller.startGame();
 	//start game timer
 	
