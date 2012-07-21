@@ -80,6 +80,7 @@ Controller.prototype.interaction = function()
 				ingredient.x = this.player.x;
 				ingredient.y = this.player.y;
 				this.catchedIngredients.push(ingredient);
+				orderSummary.addIngredient(ingredient);
 			}
 			else
 			{
@@ -112,10 +113,12 @@ Controller.prototype.update = function()
 		}
 	}
 	
+	var totalHeight=0;
 	for(var i=0; i<this.catchedIngredients.length; i++) {
 		var ingredient = this.catchedIngredients[i];
 		this.isGameOver(ingredient);	
-		ingredient.y = h-ingredient.height*(i+1);
+		totalHeight += ingredient.height;
+		ingredient.y = h-totalHeight;
 		if(lfHeld) {
 			ingredient.x = ingredient.x-MOVE_PLAYER_SPEED;
 		}
