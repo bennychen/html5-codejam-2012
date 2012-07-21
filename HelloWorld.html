@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/IngredientFactory.js"></script>
 	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/State.js"></script>
+	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script>
 	
 	var canvas;
@@ -41,37 +42,16 @@
 	function init() {
 	
 		canvas = document.getElementById("mainCanvas");
-		console.log("a");
+	
 		// create a stage object to work with the canvas. This is the top level node in the display list:
 		stage = new Stage(canvas);
 		factory = new IngredientFactory();
 		controller = new Controller(stage, canvas);
-		controller.startGame();
-		canvas.onclick = handleClick;
+		
 
 		SM.RegisterState( "ingame", InGameState );
 
 		SM.SetStateByName( "ingame" );
-	}
-	
-	function handleClick() {
-		//prevent extra clicks and hide text
-		canvas.onclick = null;
-		restart();
-	}
-
-	
-	
-	//reset all game logic
-	function restart() {
-		//hide anything on stage and show the score
-		stage.removeAllChildren();
-
-		//ensure stage is blank and add the ship
-		stage.clear();
-		
-		
-		
 	}
 	
 	function abs(lvalue, rvalue)
