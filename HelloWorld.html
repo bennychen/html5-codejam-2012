@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>EaselJS Example: Text</title>
+
+	<link href="css/demoStyles.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="js/libs/easeljs/utils/UID.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/utils/Ticker.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/geom/Matrix2D.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/geom/Rectangle.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/DisplayObject.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/Container.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/Stage.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/events/MouseEvent.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/Text.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/SpriteSheet.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/BitmapAnimation.js"></script>
+	<script type="text/javascript" src="js/libs/easeljs/display/Bitmap.js"></script>
+	
+	<!-- We also provide hosted minified versions of all CreateJS libraries.
+	  http://code.createjs.com -->
+	<script type="text/javascript" src="js/Ingredient.js"></script>
+	<script>
+	var canvas;
+	var stage;
+	var text;
+	var ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce", "top"];
+	var base;
+	
+	var KEYCODE_ENTER = 13;		//usefull keycode
+	var KEYCODE_SPACE = 32;		//usefull keycode
+	var KEYCODE_UP = 38;		//usefull keycode
+	var KEYCODE_LEFT = 37;		//usefull keycode
+	var KEYCODE_RIGHT = 39;		//usefull keycode
+	var KEYCODE_W = 87;			//usefull keycode
+	var KEYCODE_A = 65;			//usefull keycode
+	var KEYCODE_D = 68;			//usefull keycode
+	
+	var lfHeld;
+	var rtHeld;
+	
+	var catched=[];
+	
+	//register key functions
+	document.onkeydown = handleKeyDown;
+	document.onkeyup = handleKeyUp;
+	
+	function init() {
+		canvas = document.getElementById("testCanvas");
+		// create a stage object to work with the canvas. This is the top level node in the display list:
+		stage = new createjs.Stage(canvas);
+
+		text = new createjs.Text("Sky Burger", "36px Arial", "#777");
+		stage.addChild(text);
+		text.x = 360;
+		text.y = 200;
+
+		base = new Ingredient('bottom');
+		base.x = canvas.width/2;
+		base.y = canvas.height;
+		base.catched = true;
+		catched.push(base);
+		
+		// call update on the stage to make it render the current display list to the canvas:
+		stage.update();
+		canvas.onclick = handleClick;
+	}
+	
+	function handleClick() {
+		//prevent extra clicks and hide text
+		canvas.onclick = null;
+		stage.removeChild(text);
+
+		restart();
+	}
+	
+	//allow for WASD and arrow control scheme
+	function handleKeyDown(e) {
+		//cross browser issues exist
+		if(!e){ var e = window.event; }
+		switch(e.keyCode) {
+			case KEYCODE_LEFT:	lfHeld = true; return false;
+			case KEYCODE_RIGHT: rtHeld = true; return false;
+		}
+	}
+
+	function handleKeyUp(e) {
+		//cross browser issues exist
+		if(!e){ var e = window.event; }
+		switch(e.keyCode) {
+			case KEYCODE_LEFT:	lfHeld = false; break;
+			case KEYCODE_RIGHT: rtHeld = false; break;
+		}
+	}
+	
+	//reset all game logic
+	function restart() {
+		//hide anything on stage and show the score
+		stage.removeAllChildren();
+
+		//ensure stage is blank and add the ship
+		stage.clear();
+		
+		//create flowers
+		for(var i=0; i<10; i++ ){
+			var ingredient = new Ingredient(ingredients[Math.random()*ingredients.length|0]);
+			ingredient.x = Math.random() * canvas.width % canvas.width;
+			ingredient.y =  - i*100;
+			stage.addChild(ingredient);
+		}
+		
+		
+		stage.addChild(base);
+		//start game timer
+		createjs.Ticker.addListener(window);
+		
+		
+	}
+	
+	function abs(lvalue, rvalue)
+	{
+		if(lvalue-rvalue > 0)
+			return (lvalue-rvalue);
+		else 
+			return rvalue-lvalue;
+	}
+	function handleInteraction()
+	{
+		var l = stage.getNumChildren();
+		for (var i=0; i<l; i++) {
+			var ingredient = stage.getChildAt(i);
+			if( abs(ingredient.x, base.x) < 20 && (base.y-catched.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
+				ingredient.catched = true;
+				ingredient.x = base.x;
+				ingredient.y = base.y;
+				catched.push(ingredient);
+				
+			}
+		}
+	}
+	
+	function tick() {
+
+		var w = canvas.width;
+		var h = canvas.height;
+		var l = stage.getNumChildren();
+
+		handleInteraction();
+		// iterate through all the children and move them according to their velocity:
+		for (var i=0; i<l; i++) {
+			var ingredient = stage.getChildAt(i);
+			if( !ingredient.catched ){ 
+				ingredient.y= (ingredient.y+ingredient.vy);
+				if(ingredient.y>h) {
+					ingredient.y = -900;
+				}
+			}
+		}
+		for(var i=0; i<catched.length; i++) {
+			catched[i].y = h-34*(i+1);
+			if(lfHeld) {
+				catched[i].x = catched[i].x-13;
+			}
+			if(rtHeld) {
+				catched[i].x = catched[i].x+13;
+			}
+		}
+		// draw the updates to stage:
+		stage.update();
+	}
+	</script>
+</head>
+	
+<body onload="init();">
+
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Easel<strong>JS</strong></span> Hello World!</h1>
+	    <p>Hello World example using <strong>Text</strong> and <strong>Stage</strong>.</p>
+	</header>
+
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="960" height="400"></canvas>
+	</div>
+</body>
+</html>
