@@ -4,6 +4,8 @@ function OnEnterInGameState()
 	document.onkeydown = handleKeyDown;
 	document.onkeyup = handleKeyUp;
 	
+	initLevel();
+	
 	controller.startGame();
 	//start game timer
 	

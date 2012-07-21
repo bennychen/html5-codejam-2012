@@ -6,7 +6,7 @@ var IngredientPrice = [
 	{ egg:0.57 },
 	{ meat:0.86 },
 	{ lettuce:0.57 }
-]
+];
 
 var easyOrders = [];
 var normalOrders = [];
@@ -134,7 +134,7 @@ function Level() {
 Level.prototype.generateNextLevel = function() {
 	this.levelNum++;
 	
-	if ( levelNum < 3 ) {
+	if ( this.levelNum < 3 ) {
 		this.order = getOrder('easy');
 	} else if ( 0 == (levelNum % 10))  {
 		this.order = getOrder('hard');
@@ -144,5 +144,9 @@ Level.prototype.generateNextLevel = function() {
 	
 }
 
+function initLevel() {
+	level = new Level();
+	level.generateNextLevel();
+}
 
 
