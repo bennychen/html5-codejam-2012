@@ -39,7 +39,7 @@ Controller.prototype.interaction = function()
 	var l = this.stage.getNumChildren();
 	for (var i=0; i<l; i++) {
 		var ingredient = this.stage.getChildAt(i);
-		if( abs(ingredient.x, this.player.x) < 20 && (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
+		if( utils.abs(ingredient.x, this.player.x) < 20 && (this.player.y-this.catchedIngredients.length*34)-(ingredient.y+ingredient.vy) < 5 && !ingredient.catched ) {
 			ingredient.catched = true;
 			ingredient.x = this.player.x;
 			ingredient.y = this.player.y;
