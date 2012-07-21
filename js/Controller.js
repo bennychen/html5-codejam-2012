@@ -1,5 +1,5 @@
 var MOVE_PLAYER_SPEED = 13
-var MAX_INGREDIENTS_ON_STAGE = 3
+var MAX_INGREDIENTS_ON_STAGE = 6
 
 function Controller( stage, canvas ) {
 	this.stage = stage;
@@ -79,8 +79,8 @@ Controller.prototype.interaction = function()
 			if ( xDistanceAbs < 40 )
 			{
 				ingredient.catched = true;
-				ingredient.x = this.player.x;
-				ingredient.y = this.player.y;
+				ingredient.x = this.catchedIngredients[this.curControlIngredientIndex].x;
+				ingredient.y = this.catchedIngredients[this.curControlIngredientIndex].y;
 				this.catchedIngredients.push(ingredient);
 
 				if ( this.onCatchIngredient != null )
@@ -120,18 +120,18 @@ Controller.prototype.update = function()
 	}
 	
 	// move ingredients according to their velocity
-	var gapToBottomBorder = this.player.height / 2
+	var gapToBottomBorder = 0 
 	var totalHeight = gapToBottomBorder;
 	for(var i=0; i<this.catchedIngredients.length; i++) 
 	{
 		var ingredient = this.catchedIngredients[i];
-		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE )
+		totalHeight += ingredient.height;
+		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE - 1 )
 		{
 			this.stageOffsetY = totalHeight - gapToBottomBorder;
 			this.curControlIngredientIndex = i;
 		}
 		ingredient.y = canvasHeight - totalHeight;
-		totalHeight += ingredient.height;
 	}
 	for(var i=0; i<this.catchedIngredients.length; i++) 
 	{
