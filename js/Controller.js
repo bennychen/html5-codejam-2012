@@ -1,5 +1,5 @@
 var MOVE_PLAYER_SPEED = 13
-var MAX_INGREDIENTS_ON_STAGE = 6
+var MAX_INGREDIENTS_ON_STAGE = 5
 
 function Controller( stage, canvas ) {
 	this.stage = stage;
@@ -76,7 +76,7 @@ Controller.prototype.interaction = function()
 		{
 			var xDistance = ingredient.x - checkedIngredient.x;
 			var xDistanceAbs = utils.abs( ingredient.x, checkedIngredient.x )
-			if ( xDistanceAbs < 40 )
+			if ( xDistanceAbs < 50 )
 			{
 				ingredient.catched = true;
 				ingredient.x = this.catchedIngredients[this.curControlIngredientIndex].x;
@@ -128,7 +128,7 @@ Controller.prototype.update = function()
 		totalHeight += ingredient.height;
 		if ( i == this.catchedIngredients.length - MAX_INGREDIENTS_ON_STAGE - 1 )
 		{
-			this.stageOffsetY = totalHeight - gapToBottomBorder;
+			this.stageOffsetY = utils.lerp( this.stageOffsetY, totalHeight - gapToBottomBorder, Ticker.getInterval() / 100 );
 			this.curControlIngredientIndex = i;
 		}
 		ingredient.y = canvasHeight - totalHeight;
