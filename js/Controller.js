@@ -113,7 +113,8 @@ Controller.prototype.update = function()
 	}
 	
 	var totalHeight=0;
-	for(var i=0; i<this.catchedIngredients.length; i++) {
+	for(var i=0; i<this.catchedIngredients.length; i++) 
+	{
 		var ingredient = this.catchedIngredients[i];
 
 		this.isGameOver(ingredient);	
@@ -121,15 +122,26 @@ Controller.prototype.update = function()
 
 		ingredient.y = h-totalHeight;
 		ingredient.y = h-ingredient.height*(i+1);
-		if(lfHeld) {
-			ingredient.x = ingredient.x-MOVE_PLAYER_SPEED;
-		}
-		if(rtHeld) {
-			ingredient.x = ingredient.x+MOVE_PLAYER_SPEED;
-		}
 	}
 	
+	if(lfHeld) 
+	{
+		this.player.x = this.player.x-MOVE_PLAYER_SPEED;
+	}
+	if(rtHeld) 
+	{
+		this.player.x = this.player.x+MOVE_PLAYER_SPEED;
+	}
 	this.player.y = h-this.player.height;
+
+	var lastIngredient = this.player;
+	for(var i = 1; i < this.catchedIngredients.length; i++)
+	{
+		var ingredient = this.catchedIngredients[i];
+		ingredient.x = utils.lerp( ingredient.x, lastIngredient.x, 
+				Ticker.getInterval() / 100 )
+		lastIngredient = ingredient
+	}
 	
 	// draw the updates to stage:
 	this.stage.update();

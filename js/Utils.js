@@ -9,6 +9,19 @@ Utils.prototype.abs = function(lvalue, rvalue)
 		return rvalue-lvalue;
 }
 
+Utils.prototype.lerp = function( a, b, t )
+{
+	t = this.clamp( t, 0, 1 )
+	return ( a + t * ( b - a ) );
+}
+
+Utils.prototype.clamp = function( value, min, max )
+{
+	if ( value < min ) { value = min; }
+	if ( value > max ) { value = max; }
+	return value;
+}
+
 Utils.prototype.getIngredientHeight = function(type)
 {
 	var height;
