@@ -53,3 +53,10 @@ function setOrderSummaryUIByIngredient(ingredientCountToGo) {
 		
 	}
 }
+
+function setOrderSummaryTip(tip){
+	$('#tip').text('Tips: '+ tip);
+}
+function setOrderSummaryTotal(total){
+	$('#total').text('$ '+total);
+}
