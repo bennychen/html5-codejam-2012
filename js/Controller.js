@@ -112,6 +112,8 @@ Controller.prototype.interaction = function()
 				{
 					var angle = xDistance > 0 ? 75 : -75;
 					Tween.get( ingredient ).to( {rotation: angle}, 500, Ease.linear );
+
+					SoundJS.play( "scream", SoundJS.INTERRUPT_ANY, 0, 2000 );
 				}
 			}
 		}
