@@ -4,6 +4,7 @@ function OnEnterGameIntroState()
 	orderSummary = new OrderSummary();
 	setIntroUI();
 	showIntroUI();
+	
 }
 
 function OnExitGameIntroState()

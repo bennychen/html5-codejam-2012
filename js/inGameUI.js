@@ -22,16 +22,12 @@ $(document).ready(function() {
 	});
 	
 	$('#testButton').click(function() {
-		hideIntroUI();
-		hideSuccessUI();
 		SM.SetStateByName("ingame");
 	});
 	$('#testButton2, #backButton').click(function() {
 		SM.SetStateByName("menu");
 	});
 	$('#nextButton').click(function() {
-		hideIntroUI();
-		hideSuccessUI();
 		SM.SetStateByName("gameIntro");
 	});
 });

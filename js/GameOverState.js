@@ -12,7 +12,8 @@ function OnEnterGameOverState()
 
 function OnExitGameOverState()
 {
-	//TODO
+	hideSuccessUI();
+	hideOrderFailUI();
 }
 
 var GameOverState = new State( OnEnterGameOverState, OnExitGameOverState );
