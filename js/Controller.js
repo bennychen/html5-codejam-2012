@@ -103,6 +103,7 @@ Controller.prototype.interaction = function()
 			{
 				if(ingredient.type == 'top') {
 					SM.SetStateByName( "gameover" );
+					return;
 				}
 				ingredient.catched = true;
 				ingredient.x = this.catchedIngredients[this.curControlIngredientIndex].x;

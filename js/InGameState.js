@@ -24,7 +24,8 @@ function OnExitInGameState()
 	document.onkeyup = null;
 	
 	controller.stopGame();
-	Ticker.removeListener(window)
+	Ticker.removeAllListeners();
+	//Ticker.removeListener(window)
 }
 
 //allow for WASD and arrow control scheme
@@ -48,10 +49,15 @@ function handleKeyUp(e) {
 
 	
 function tick() {
-
-	controller.interaction();
-	controller.update();
-	orderSummary.render();
+	if(SM.currentState.name == 'ingame') {
+		controller.interaction();
+	}
+	if(SM.currentState.name == 'ingame') {
+		controller.update();
+	}
+	if(SM.currentState.name == 'ingame') {
+		orderSummary.render();
+	}
 }
 
 function OnCatchIngredient( ingredient )
