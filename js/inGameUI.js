@@ -53,14 +53,21 @@ function setSuccessUI() {
 	$('#successTips').text( '$' + tips );
 }
 function showSuccessUI() {
-	orderSuccessUI.fadeIn();
+	orderSuccessUI.fadeIn(function() {
+		$('#inGameMenu-replay').attr("disabled","disabled"); 
+	});
 }
 function hideSuccessUI() {
-	orderSuccessUI.fadeOut();
+	orderSuccessUI.fadeOut(function() {
+		$('#inGameMenu-replay').removeAttr("disabled"); 
+	});
 }
 
 function showOrderSummaryUI() {
-	orderSummaryUI.fadeIn();
+	
+	orderSummaryUI.fadeIn( function() {
+		
+	});
 }
 function hideOrderSummaryUI() {
 	orderSummaryUI.fadeOut();
