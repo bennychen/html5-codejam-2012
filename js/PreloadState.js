@@ -23,6 +23,7 @@ function OnEnterPreloadState()
 		{src:'./img/burger/top.png', id:"top"},
 		{src:'./sound/background.mp3', id:"backgroundmusic"},
 		{src:'./sound/scream.mp3', id:"scream"},
+		{src:'./sound/short.mp3', id:"short"},
 	];
 
 	var loader = new PreloadJS();

@@ -64,6 +64,7 @@ function tick() {
 
 function OnCatchIngredient( ingredient )
 {
+	SoundJS.play( "short", SoundJS.INTERRUPT_ANY );
 	orderSummary.addIngredient(ingredient);
 	if(ingredient.getType() == 'top')
 	{
