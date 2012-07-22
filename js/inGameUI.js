@@ -8,7 +8,12 @@ $(document).ready(function() {
 	orderSuccessUI = $('#successDialog');
 	
 	orderFailUI.click(function(){
-			
+		
+		orderFailUI.fadeOut(function() {
+			level.generateNextLevel();
+			SM.SetStateByName("ingame");
+			controller.restartGame();
+		});
 	});
 });
 

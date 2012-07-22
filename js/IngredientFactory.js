@@ -1,7 +1,7 @@
 (function(window) {
 
 	function IngredientFactory() {
-		this.ingredients = ['top'];
+		this.ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce",'top', 'top', 'top','top'];
 	}
 	
 	Ingredient.ingredients;
