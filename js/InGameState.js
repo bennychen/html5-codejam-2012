@@ -27,6 +27,7 @@ function OnExitInGameState()
 	
 	controller.stopGame();
 	Ticker.removeAllListeners();
+	hideOrderSummaryUI();
 	//Ticker.removeListener(window)
 }
 
