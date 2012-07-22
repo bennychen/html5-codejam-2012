@@ -57,7 +57,10 @@ function handleFileLoad(event)
 
 function handleComplete() 
 {
-	SM.SetStateByName( "menu" )
+	setTimeout( function()
+			{
+	SM.SetStateByName( "menu" );
+			}, 1000);
 }
 
 

@@ -62,16 +62,11 @@ function tick() {
 
 function OnCatchIngredient( ingredient )
 {
-	console.log( "catch new ingredient" )
 	orderSummary.addIngredient(ingredient);
 	if(ingredient.getType() == 'top')
 	{
-		console.log("game over");	
+		SM.SetStateByName( "gameover" );
 	} 
-	else
-	{
-		//TODO: update tips and update ingredient count in GUI
-	}
 }
 
 var InGameState = new State( OnEnterInGameState, OnExitInGameState );

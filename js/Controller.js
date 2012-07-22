@@ -101,13 +101,9 @@ Controller.prototype.interaction = function()
 			var xDistanceAbs = utils.abs( ingredient.x, checkedIngredient.x )
 			if ( xDistanceAbs < 50 )
 			{
-				if(ingredient.type == 'top') {
-					SM.SetStateByName( "gameover" );
-					return;
-				}
 				ingredient.catched = true;
-				ingredient.x = this.catchedIngredients[this.curControlIngredientIndex].x;
-				ingredient.y = this.catchedIngredients[this.curControlIngredientIndex].y;
+				ingredient.x = checkedIngredient.x;//this.catchedIngredients[this.curControlIngredientIndex].x;
+				//ingredient.y = checkedIngredient.y;//this.catchedIngredients[this.curControlIngredientIndex].y;
 				this.catchedIngredients.push(ingredient);
 
 				if ( this.onCatchIngredient != null )
