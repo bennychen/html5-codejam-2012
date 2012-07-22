@@ -61,7 +61,7 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 		var togoCount = this.ingredientCountToGo[type];
 		togoCount -= 1;
 		if(togoCount < 0) {
-			this.substractTips();
+			this.subtractTips();
 			togoCount = 0;
 		}
 		this.ingredientCountToGo[type] = togoCount;
