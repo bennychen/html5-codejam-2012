@@ -74,8 +74,8 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 			togoCount = 0;
 		} else {
 		
-			this.subTotal += IngredientPrice[type];
-			console.log(IngredientPrice[type]);
+			this.subTotal = (this.subTotal * 100 + IngredientPrice[type] * 100 ) / 100;
+
 			this.addTips();
 		}
 		this.ingredientCountToGo[type] = togoCount;
