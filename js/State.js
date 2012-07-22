@@ -67,7 +67,7 @@ function StateMachine()
 				console.log( "exiting state [" + this.lastState.name + "]" )
 				this.lastState.OnExit()
 			}
-			console.log( "entering state [" + this.currentState.name + "]" )
+			//console.log( "entering state [" + this.currentState.name + "]" )
 			this.currentState.OnEnter()
 		}
 		else
