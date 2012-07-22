@@ -26,9 +26,8 @@ function OnExitInGameState()
 	document.onkeyup = null;
 	
 	controller.stopGame();
-	Ticker.removeAllListeners();
 	hideOrderSummaryUI();
-	//Ticker.removeListener(window)
+	Ticker.removeListener(window)
 }
 
 //allow for WASD and arrow control scheme
