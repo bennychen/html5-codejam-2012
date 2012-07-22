@@ -12,17 +12,17 @@ function OnEnterPreloadState()
 
 	var manifest = [
 		{src:'./img/verticalsky.jpg', id:"sky"},
-		{src:'./img/menubg.jpg', id:"menubackground"},
-		{src:'./img/menustart.jpg', id:"menustart"},
-		{src:'./img/menustartactive.jpg', id:"menustartactive"},
-		{src:'./img/burger/bottom.jpg', id:"bottom"},
-		{src:'./img/burger/cheese.jpg', id:"cheese"},
-		{src:'./img/burger/egg.jpg', id:"egg"},
-		{src:'./img/burger/lettuce.jpg', id:"lettuce"},
-		{src:'./img/burger/meat.jpg', id:"meat"},
-		{src:'./img/burger/onion.jpg', id:"onion"},
-		{src:'./img/burger/tomato.jpg', id:"tomato"},
-		{src:'./img/burger/top.jpg', id:"top"},
+		{src:'./img/menubg.png', id:"menubackground"},
+		{src:'./img/menustart.png', id:"menustart"},
+		{src:'./img/menustartactive.png', id:"menustartactive"},
+		{src:'./img/burger/bottom.png', id:"bottom"},
+		{src:'./img/burger/cheese.png', id:"cheese"},
+		{src:'./img/burger/egg.png', id:"egg"},
+		{src:'./img/burger/lettuce.png', id:"lettuce"},
+		{src:'./img/burger/meat.png', id:"meat"},
+		{src:'./img/burger/onion.png', id:"onion"},
+		{src:'./img/burger/tomato.png', id:"tomato"},
+		{src:'./img/burger/top.png', id:"top"},
 	];
 	
 	var loader = new PreloadJS();
@@ -42,27 +42,26 @@ function OnExitPreloadState()
 
 function handleFileLoad(event) 
 {
-	assets.push( { id: event.id, type: event.type, asset: event.result } );
+	var asset = { id: event.id, type: event.type, result: event.result };
+	assets.push( asset );
 }
 
 function handleComplete() 
 {
-	for(var i=0;i<assets.length;i++) 
+	for(var i = 0; i<assets.length; i++) 
 	{
-		var item = assets[i]; //loader.getResult(id);
-		var id = item.id;
-		var result = item.asset;//item.result;
+		var item = assets[i];
 		
-		//if (item.type == PreloadJS.IMAGE) {
-			//var bmp = new Bitmap(result);
-		//}
-
-		switch (id) {
-			case "sky":
-				// grab canvas width and height for later calculations:
-				sky = new Shape(new Graphics().beginBitmapFill(result).drawRect(0,0,canvas.width,5394));
-				sky.x=0;
-				sky.y=-5394;
+		if (item.type == PreloadJS.IMAGE) 
+		{
+			if ( item.id == "sky" )
+			{
+				sky = new Shape(new Graphics().beginBitmapFill(item.result).drawRect(0,0,canvas.width,5394));
+			}
+			else
+			{
+				item.bmp = new Bitmap(item.result);
+			}
 		}
 	}
 
