@@ -30,7 +30,7 @@
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
 	<script type="text/javascript" src="js/inGameUI.js"></script>
-
+	<script type="text/javascript" src="js/GameIntroState.js"></script>
 	<script>
 	
 	var canvas;
@@ -65,6 +65,7 @@
 		SM.RegisterState( "ingame", InGameState );
 		SM.RegisterState( "menu", MenuState );
 		SM.RegisterState( "gameover", GameOverState );
+		SM.RegisterState( "gameIntro", GameIntroState);
 		SM.SetStateByName( "preload" );
 	}
 	
@@ -113,8 +114,8 @@
 			<div id="successDialog">
 				<p class="orderName">Order #<span id="successOrderNum">1</span> <span id="successOrderName">Seemeloo Burger</span></p>
 				<ul id="successSammary">
-					<a id="testButton">test1</a>
-					<a id="testButton2">test2</a>
+					<a id="testButton">Start Game</a>
+					<a id="testButton2">Back</a>
 
 				</ul>
 			</div>

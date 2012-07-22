@@ -1,11 +1,15 @@
 function OnEnterGameIntroState()
 {
-	//TODO
+	initLevel();
+	orderSummary = new OrderSummary();
+	
+	showSuccessUI();
 }
 
 function OnExitGameIntroState()
 {
-	//TODO
+	hideSuccessUI();
+	hideOrderSummaryUI();
 }
 
 var GameIntroState = new State( OnEnterGameIntroState, OnExitGameIntroState );
