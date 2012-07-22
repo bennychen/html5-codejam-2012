@@ -24,17 +24,30 @@ function initMenu() {
 
 	MenuState.container.addChild(assets.menubackground.bmp);
 
+	var menuStartActive = assets.menustartactive.bmp;
+	menuStartActive.x = 350;
+	menuStartActive.y = 320;
+	//MenuState.container.addChild( menuStartActive );
+	menuStartActive.visible = false;
+
 	var menuStart = assets.menustart.bmp;
 	menuStart.x = 350;
 	menuStart.y = 320;
 	MenuState.container.addChild(menuStart);
-	//bitmap.onPress = handleStartPress;
 
 	(function(target) {
-		menuStart.onPress = function(evt) {
+		menuStart.onPress = function(evt) 
+		{
+			//menuStartActive.visible = true;
+			//menuStart.visible = false;
+		}
+		menuStart.onClick = function(evt)
+		{
+			//menuStartActive.visible = false;
+			//menuStart.visible = true;
+
 			//cross browser issues exist
 			SM.SetStateByName( "ingame" );
-
 		}
 		menuStart.onMouseOver = function() {
 			

@@ -11,6 +11,10 @@
 		this.height = height;
 		this.type = type;
 
+        //var bmp = new Bitmap(this.imageSource);
+		var shape = new Shape( assets[ this.type ].bmp );
+        this.addChild(shape);
+
 		var bmp = this.getChildAt( 0 );
 		bmp.regX = this.width / 2;
 		bmp.regY = 0;
@@ -32,8 +36,6 @@
 	Ingredient.prototype.Container_initialize = Ingredient.prototype.initialize;
     Ingredient.prototype.initialize = function() {
         this.Container_initialize();
-        var bmp = new Bitmap(this.imageSource);
-        this.addChild(bmp);
     }
 	
 	Ingredient.prototype.getHeight = function()
