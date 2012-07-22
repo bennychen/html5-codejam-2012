@@ -28,7 +28,7 @@
 	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
-	<script type="text/javascript" src="js/OrderSummaryUI.js"></script>
+	<script type="text/javascript" src="js/inGameUI.js"></script>
 
 	<script>
 	
@@ -79,7 +79,7 @@
 	
 	<div id="canvasHolder">
 		<canvas id="mainCanvas" width="980" height="620"></canvas>
-		<div id="inGameMenu">
+			<div id="inGameMenu">
 				<div id="inGameMenu-leftMask"></div>
 				<div id="inGameMenu-orderName"></div>
 				<ul id="inGameMenu-order">
@@ -99,13 +99,13 @@
 				<p id="tip">Tip:3%</p>
 				</div>
 				<a style="position:relative" id="inGameMenu-replay" onclick="controller.restartGame();">Replay</a>
-			</div>
+			</div><!--inGameMenu-->
 			
 			<div id="failDialog">
-			<p>Sorry!!!!!!</p>
-			<a onclick="">replay</a>
-			</div>
-	</div>
+				<p id="orderFail" class="textGradientFail">Order Fail</p>
+				<p id="orderFailContinue">Tap to continue</p>
+			</div><!--failDialog-->
+	</div><!--canvasHolder-->
 	
 
 

@@ -363,3 +363,29 @@ body {
 #total {
 	font-size:1.5em;
 }
+
+#failDialog {
+	position: absolute;
+	font-family: "Rock Salt";
+	color:#FFF;
+	top:30%;
+	left:35%;
+	cursor: pointer;
+	
+}
+#orderFail {
+	font-size: 3em;
+	margin-bottom: 0;
+	font-weight: bold;
+	color:#df1e02;
+	text-shadow: 1px 1px 3px #000;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-10);
+}
+#orderFailContinue {
+	text-shadow: 1px 1px 2px #000;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-10);
+}
