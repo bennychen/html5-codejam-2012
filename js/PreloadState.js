@@ -1,6 +1,4 @@
-var loader;
 var assets;
-var manifest;
 var sky;
 
 function OnEnterPreloadState()
@@ -12,7 +10,7 @@ function OnEnterPreloadState()
 
 	assets = [];
 
-	manifest = [
+	var manifest = [
 		{src:'./img/verticalsky.jpg', id:"sky"},
 		{src:'./img/menubg.jpg', id:"menubackground"},
 		{src:'./img/menustart.jpg', id:"menustart"},
@@ -27,7 +25,7 @@ function OnEnterPreloadState()
 		{src:'./img/burger/top.jpg', id:"top"},
 	];
 	
-	loader = new PreloadJS();
+	var loader = new PreloadJS();
 	loader.useXHR = false; //Loads the images using tag loading.
 	
 	loader.onFileLoad = handleFileLoad;
@@ -44,7 +42,7 @@ function OnExitPreloadState()
 
 function handleFileLoad(event) 
 {
-	assets.push(event);
+	assets.push( { id: event.id, type: event.type, asset: event.result } );
 }
 
 function handleComplete() 
@@ -53,11 +51,11 @@ function handleComplete()
 	{
 		var item = assets[i]; //loader.getResult(id);
 		var id = item.id;
-		var result = item.result;
+		var result = item.asset;//item.result;
 		
-		if (item.type == PreloadJS.IMAGE) {
-			var bmp = new Bitmap(result);
-		}
+		//if (item.type == PreloadJS.IMAGE) {
+			//var bmp = new Bitmap(result);
+		//}
 
 		switch (id) {
 			case "sky":
