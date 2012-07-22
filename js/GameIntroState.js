@@ -1,10 +1,9 @@
 function OnEnterGameIntroState()
 {
-	initLevel();
-	orderSummary = new OrderSummary();
+	level.generateNextLevel();
+  //  orderSummary = new orderSummary();
 	setIntroUI();
-	showIntroUI();
-	
+	showIntroUI();	
 }
 
 function OnExitGameIntroState()
