@@ -1,7 +1,7 @@
 function OnEnterGameOverState()
 {
 	if(orderSummary.isOrderComplete()) {
-		
+		showSuccessUI();
 	}
 	else{
 		showOrderFailUI();

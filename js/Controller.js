@@ -27,6 +27,7 @@ Controller.prototype.startGame = function()
 {
 	this.stage.removeAllChildren();
 	this.stage.clear();
+	this.stage.addChildAt(sky,0);
 	this.addPlayer();
 	this.timerId = setInterval(this.addIngredient, 2000);
 	this.curControlIngredientIndex = 0;
