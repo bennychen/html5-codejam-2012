@@ -325,6 +325,7 @@ body {
 	width: 15%;
 	font-family: "Rock Salt";
 	color: #FFF;
+	display: none;
 }
 #inGameMenu-leftMask {
 	position: absolute;
@@ -371,6 +372,7 @@ body {
 	top:30%;
 	left:35%;
 	cursor: pointer;
+	display: none;
 	
 }
 #orderFail {

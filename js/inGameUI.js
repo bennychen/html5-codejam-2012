@@ -25,7 +25,21 @@ function hideOrderSummaryUI() {
 }
 
 function initOrderSummaryUIByLevel(level) {
-	
+	for(var i=0; i<level.order.ingredients.length; i++){
+			
+		$('#' + level.order.ingredients[i].type).show();	
+		$('#' + level.order.ingredients[i].type + 'Num').text( level.order.ingredients[i].num );
+
+	}	
+}
+
+function hideAllIngredients() {
+	//hide all ingredient
+	for( var i=0; i<IngredientTypes.length; i++) {
+		var type = IngredientTypes[i];
+		$('#' + type).hide();
+		
+	}
 }
 
 function setOrderSummaryUIByIngredient(ingredientCountToGo) {

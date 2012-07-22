@@ -14,21 +14,18 @@ function OrderSummary( ){
 	
 	this.ingredientCountToGo={}
 	
-	//hide all ingredient
-	for( var i=0; i<IngredientTypes.length; i++) {
-		var type = IngredientTypes[i];
-		$('#' + type).hide();
-		
-	}
 	//show ingredient by order	
 	for(var i=0; i<level.order.ingredients.length; i++){
 		this.ingredientCountToGo[level.order.ingredients[i].type] = 
 			level.order.ingredients[i].num;
 			
-		$('#' + level.order.ingredients[i].type).show();	
-		$('#' + level.order.ingredients[i].type + 'Num').text( this.ingredientCountToGo[level.order.ingredients[i].type] );
-
 	}
+	
+	//set UI
+	hideAllIngredients();
+	initOrderSummaryUIByLevel(level);
+	
+	showOrderSummaryUI();
 	
 	this.subTotal = 0;
 }
