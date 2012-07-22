@@ -402,6 +402,7 @@ body {
 	font-family: "Rock Salt";
 	color: #55463a;
 	display: none;
+	text-align: left;
 }
 .orderName{
 	margin:170px 0 0 230px;
@@ -411,11 +412,13 @@ body {
 	color:#8d1504;
 	font-size: 1.2em;
 }
+#successSammary {
+	list-style: none;
+	padding-left: 300px;
+	font-size: 1.4em;
+	line-height: 2em;
+}
 .sammaryType,.sammaryNum {
 	display: inline-block;
 }
 
-.sammaryType {
-	width:40%;
-	text-align: right;
-}
