@@ -68,20 +68,29 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 	if(this.ingredientCountToGo[type] != undefined) {
 		var togoCount = this.ingredientCountToGo[type];
 		togoCount -= 1;
+		
 		if(togoCount < 0) {
 			this.subtractTips();
 			togoCount = 0;
+		} else {
+		
+			this.subTotal += IngredientPrice[type];
+			console.log(IngredientPrice[type]);
+			this.addTips();
 		}
 		this.ingredientCountToGo[type] = togoCount;
 	}
 	else {
 		this.subtractTips();
 	}
-	this.subTotal += IngredientPrice[type];
+	
+
 }
 
 OrderSummary.prototype.render = function()
 {
+	setOrderSummaryTip(this.tips);
+	setOrderSummaryTotal(this.subTotal);
 	setOrderSummaryUIByIngredient(this.ingredientCountToGo);
 }
 
