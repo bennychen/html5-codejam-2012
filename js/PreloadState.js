@@ -21,11 +21,12 @@ function OnEnterPreloadState()
 		{src:'./img/burger/onion.png', id:"onion"},
 		{src:'./img/burger/tomato.png', id:"tomato"},
 		{src:'./img/burger/top.png', id:"top"},
+		{src:'./sound/background.mp3', id:"backgroundmusic"},
 	];
-	
+
 	var loader = new PreloadJS();
 	loader.useXHR = false; //Loads the images using tag loading.
-	
+	loader.installPlugin(SoundJS);	
 	loader.onFileLoad = handleFileLoad;
 	loader.onComplete = handleComplete;
 	
