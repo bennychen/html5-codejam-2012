@@ -17,6 +17,12 @@ Controller.stageOffsetY;
 Controller.curControlIngredientIndex;
 Controller.onCatchIngredient;
 
+Controller.prototype.restartGame = function()
+{
+	this.stopGame();
+	this.startGame();
+}
+
 Controller.prototype.startGame = function()
 {
 	this.addPlayer();
@@ -29,6 +35,13 @@ Controller.prototype.stopGame = function()
 	clearInterval(this.timerId);
 	this.timerId = null;
 	this.player = null;
+
+	for (var i=0; i < this.catchedIngredients.length; i++) 
+	{
+		var ingredient = this.catchedIngredients[i];
+		this.destroyIngredient();
+	}
+	
 	this.catchedIngredients = [];
 	this.stage.removeAllChildren();
 	this.stage.clear();
