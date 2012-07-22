@@ -19,19 +19,13 @@ var level = null;
 easyOrders.push({
 		 name:'Prizeburger',
 		 ingredients:[
-			 {type:'onion', num: 1 },
-			 {type:'tomato', num: 1 },
-			 {type:'cheese', num: 3 },
 			 {type:'meat', num: 1 },
 		 ]
  });
 easyOrders.push({
 		 name:'BLOOP',
 		 ingredients:[
-			 {type:'onion', num:4},
-			 {type:'tomato', num: 2 },
-			 {type:'cheese', num: 2 },
-			 {type:'meat', num: 4 },
+			 {type:'onion', num: 1 },
 		 ]
  });
 	 	
