@@ -18,19 +18,28 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('#testButton').click(function() {
+	$('#testButton, #nextButton').click(function() {
 		SM.SetStateByName("ingame");
 	});
-	$('#testButton2').click(function() {
+	$('#testButton2, #backButton').click(function() {
 		SM.SetStateByName("menu");
 	});
 });
 
 function showOrderFailUI() {
-	orderFailUI.fadeIn();
+	orderFailUI.fadeIn(function() {
+		 $('#inGameMenu-replay').click(function(e) {
+			 e.preventDefault();
+			 return false;
+	     });
+	});
 }
 function hideOrderFailUI() {
-	orderFailUI.fadeOut();
+	orderFailUI.fadeOut(function() {
+		$('#inGameMenu-replay').click( function(e) {
+			controller.restartGame();
+		});
+	});
 }
 function showIntroUI() {
 	introUI.fadeIn();
@@ -66,11 +75,30 @@ function hideSuccessUI() {
 function showOrderSummaryUI() {
 	
 	orderSummaryUI.fadeIn( function() {
+		$('#moveLeft').css('display','block');
+		$('#moveRight').css('display','block');
+		$('#moveLeft').mousedown(function () {
+			lfHeld = true;
+		});
+		$('#moveLeft').mouseup(function() {
+			lfHeld = false;
+		});
 		
+		$('#moveRight').mousedown(function() {
+			rtHeld = true;
+		});
+		
+		$('#moveRight').mouseup(function() {
+			rtHeld = false;
+		});
 	});
 }
 function hideOrderSummaryUI() {
-	orderSummaryUI.fadeOut();
+	orderSummaryUI.fadeOut(function(){
+		$('#moveLeft').css('display','none');
+		$('#moveRight').css('display','none');
+	}
+	);
 	
 }
 

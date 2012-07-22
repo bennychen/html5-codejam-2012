@@ -4,7 +4,9 @@ function OnEnterInGameState()
 	//register key functions
 	document.onkeydown = handleKeyDown;
 	document.onkeyup = handleKeyUp;
-	
+	$('#inGameMenu-replay').click( function(e) {
+		controller.restartGame();
+	});
 	initLevel();
 	
 	orderSummary = new OrderSummary();
@@ -13,6 +15,9 @@ function OnEnterInGameState()
 	controller.startGame();
 
 	Ticker.addListener(window);
+	
+	
+	
 }
 
 function OnExitInGameState()

@@ -1,6 +1,8 @@
 function OnEnterGameOverState()
 {
+	
 	if(orderSummary.isOrderComplete()) {
+		setSuccessUI();;
 		showSuccessUI();
 	}
 	else{
