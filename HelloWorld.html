@@ -25,7 +25,7 @@
 	<script type="text/javascript" src="js/State.js"></script>
 	<script type="text/javascript" src="js/PreloadState.js"></script>
 	<script type="text/javascript" src="js/MenuState.js"></script>
-	<script type="text/javascript" src="js/FailureState.js"></script>
+	<script type="text/javascript" src="js/GameOverState.js"></script>
 	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
@@ -61,9 +61,14 @@
 		SM.RegisterState( "preload", PreloadState )
 		SM.RegisterState( "ingame", InGameState );
 		SM.RegisterState( "menu", MenuState );
+<<<<<<< HEAD
 		SM.RegisterState( "failure", FailureState );
 		
 		SM.SetStateByName( "preload" );
+=======
+		SM.RegisterState( "gameover", GameOverState );
+		SM.SetStateByName( "ingame" );
+>>>>>>> success and failure
 	}
 	
 	
@@ -103,11 +108,16 @@
 				<a style="position:relative" id="inGameMenu-replay" onclick="controller.restartGame();">Replay</a>
 			</div><!--inGameMenu-->
 			
+<<<<<<< HEAD
 			<div id="failDialog">
 				<p id="orderFail" class="textGradientFail">Order Fail</p>
 				<p id="orderFailContinue">Tap to continue</p>
 			</div><!--failDialog-->
 	</div><!--canvasHolder-->
+=======
+			
+	</div>
+>>>>>>> success and failure
 	
 
 

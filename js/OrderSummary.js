@@ -34,6 +34,17 @@ OrderSummary.ingredientCount;
 OrderSummary.tips;
 OrderSummary.ingredientCountToGo;
 OrderSummary.subTotal;
+OrderSummary.prototype.isOrderComplete = function()
+{	
+	for(var i=0 ; i<IngredientTypes.length; i++) {
+		if(this.ingredientCountToGo[IngredientTypes[i]] != undefined) {
+			if(this.ingredientCountToGo[IngredientTypes[i]] != 0) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
 
 OrderSummary.prototype.addTips = function()
 {

@@ -25,6 +25,8 @@ Controller.prototype.restartGame = function()
 
 Controller.prototype.startGame = function()
 {
+	this.stage.removeAllChildren();
+	this.stage.clear();
 	this.addPlayer();
 	this.timerId = setInterval(this.addIngredient, 2000);
 	this.curControlIngredientIndex = 0;
@@ -43,8 +45,8 @@ Controller.prototype.stopGame = function()
 	}
 	
 	this.catchedIngredients = [];
-	this.stage.removeAllChildren();
-	this.stage.clear();
+//	this.stage.removeAllChildren();
+//	this.stage.clear();
 }
 
 Controller.prototype.addPlayer = function()
@@ -77,6 +79,14 @@ Controller.prototype.destroyIngredient = function(ingredient)
 	return this.stage.removeChild(ingredient);
 }
 
+Controller.prototype.isGameEnd = function(ingredient)
+{
+	if(ingredient.type == 'top') {
+		return true;
+	}
+	return false;
+}
+
 Controller.prototype.interaction = function()
 {
 	var l = this.stage.getNumChildren();
@@ -91,6 +101,9 @@ Controller.prototype.interaction = function()
 			var xDistanceAbs = utils.abs( ingredient.x, checkedIngredient.x )
 			if ( xDistanceAbs < 50 )
 			{
+				if(ingredient.type == 'top') {
+					SM.SetStateByName( "gameover" );
+				}
 				ingredient.catched = true;
 				ingredient.x = this.catchedIngredients[this.curControlIngredientIndex].x;
 				ingredient.y = this.catchedIngredients[this.curControlIngredientIndex].y;
