@@ -11,10 +11,7 @@ function OnEnterInGameState()
 	
 	controller.setOnCatchIngredient( OnCatchIngredient )
 	controller.startGame();
-	//start game timer
 
-	stage.addChildAt(sky,0);
-	stage.update();
 	Ticker.addListener(window);
 }
 

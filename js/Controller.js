@@ -31,6 +31,8 @@ Controller.prototype.startGame = function()
 	this.addPlayer();
 	this.timerId = setInterval(this.addIngredient, 2000);
 	this.curControlIngredientIndex = 0;
+	this.stageOffsetY = 0;
+	stage.update();
 }
 
 Controller.prototype.stopGame = function()
@@ -38,16 +40,7 @@ Controller.prototype.stopGame = function()
 	clearInterval(this.timerId);
 	this.timerId = null;
 	this.player = null;
-
-	for (var i=0; i < this.catchedIngredients.length; i++) 
-	{
-		var ingredient = this.catchedIngredients[i];
-		this.destroyIngredient();
-	}
-	
 	this.catchedIngredients = [];
-//	this.stage.removeAllChildren();
-//	this.stage.clear();
 }
 
 Controller.prototype.addPlayer = function()
