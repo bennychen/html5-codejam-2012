@@ -106,6 +106,22 @@ function showOrderSummaryUI() {
 
 		$('#moveLeft').css('display','block');
 		$('#moveRight').css('display','block');
+		var left = document.getElementById('moveLeft');
+		var right = document.getElementById('moveRight');
+		
+		left.addEventListener('touchmstart', function(e) {
+		    lfHeld = true;
+		}, false);
+		left.addEventListener('touchmend', function(e) {
+		    lfHeld = false;
+		}, false);
+		right.addEventListener('touchmstart', function(e) {
+		    rtHeld = true;
+		}, false);
+		right.addEventListener('touchmend', function(e) {
+		    rtHeld = false;
+		}, false);
+		
 		$('#moveLeft').mousedown(function () {
 			lfHeld = true;
 		});
