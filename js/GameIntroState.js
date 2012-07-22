@@ -3,13 +3,12 @@ function OnEnterGameIntroState()
 	initLevel();
 	orderSummary = new OrderSummary();
 	
-	showSuccessUI();
+	showIntroUI();
 }
 
 function OnExitGameIntroState()
 {
-	hideSuccessUI();
-	hideOrderSummaryUI();
+	hideIntroUI();
 }
 
 var GameIntroState = new State( OnEnterGameIntroState, OnExitGameIntroState );

@@ -392,7 +392,7 @@ body {
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-10);
 }
 
-#successDialog {
+#successDialog,#introDialog {
 	position: absolute;
 	width: 980px;
 	height: 620px;
