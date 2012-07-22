@@ -1,9 +1,10 @@
 function OnEnterPreloadState()
 {
-	var text = new Text("Loading ...", "36px Arial", "#777");
+	var text = new Text("Loading assets ...", "36px Arial", "#777");
+	text.x = canvas.width / 2;
+	text.y = canvas.height / 2;
 	stage.addChild(text);
-	text.x = 360;
-	text.y = 200;
+	stage.update()
 
 	assets = {};
 
