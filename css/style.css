@@ -391,3 +391,10 @@ body {
 	-moz-transform: rotate(-10deg);
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-10);
 }
+
+#successDialog {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	
+}
