@@ -57,7 +57,7 @@ function handleFileLoad(event)
 
 function handleComplete() 
 {
-	SM.SetStateByName( "ingame" )
+	SM.SetStateByName( "menu" )
 }
 
 
