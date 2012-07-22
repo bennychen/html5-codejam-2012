@@ -99,12 +99,12 @@ normalOrders.push({
 normalOrders.push({
 		 name:'SkyBurger',
 		 ingredients:[
-			 {type:'onion', num:9999},
-			 {type:'tomato', num:9999 },
-			 {type:'cheese', num:9999 },
-			 {type:'meat', num:9999 },
-			 {type:'egg', num:9999 },
-			 {type:'lettuce', num:9999 }
+			 {type:'onion', num:0},
+			 {type:'tomato', num:0 },
+			 {type:'cheese', num:0 },
+			 {type:'meat', num:0 },
+			 {type:'egg', num:0 },
+			 {type:'lettuce', num:0 }
 			 
 		 ]
 });

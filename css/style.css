@@ -464,3 +464,50 @@ body {
 #avatar-totalTips{
 	padding-top:180px;
 }
+#testButton,#testButton2 {
+display: inline-block;
+background:url(../img/primarybtnbg.png) no-repeat left top;
+width: 169px;
+height:73px;
+text-align: center;
+overflow: hidden;
+padding-right:30px;
+color:#777470;
+line-height: 73px;
+cursor: pointer;
+}
+#testButton {
+	position: relative;
+	left:690px;
+}
+#testButton2 {
+	background-image: url(../img/normalbtnbg.png);
+	position: relative;
+	left:490px;
+	top:100px;
+}
+#testButton:hover,#testButton2:hover {
+	background-position: left -73px;
+	color:red;
+}
+#moveLeft,#moveRight {
+	background: url(../img/movebtnbg.png) no-repeat left top;
+	display: block;
+	width: 172px;
+	height: 150px;
+	position: absolute;
+	left: 20px;
+	top:450px;
+	cursor: pointer;
+}
+#moveRight {
+	background-position: right top;
+	left:820px;
+
+}
+#moveLeft:hover,#moveLeft:active {
+	background-position: left -150px;
+}
+#moveRight:hover,#moveRight:active {
+	background-position: right -150px;
+}
