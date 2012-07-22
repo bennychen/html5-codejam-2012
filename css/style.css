@@ -400,6 +400,22 @@ body {
 	top:10px;
 	background: url(../img/successbg.png);
 	font-family: "Rock Salt";
+	color: #55463a;
 	display: none;
-	
+}
+.orderName{
+	margin:170px 0 0 230px;
+	text-align: left;
+}
+#successOrderName {
+	color:#8d1504;
+	font-size: 1.2em;
+}
+.sammaryType,.sammaryNum {
+	display: inline-block;
+}
+
+.sammaryType {
+	width:40%;
+	text-align: right;
 }

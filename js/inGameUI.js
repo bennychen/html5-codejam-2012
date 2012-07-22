@@ -15,6 +15,13 @@ $(document).ready(function() {
 			controller.restartGame();
 		});
 	});
+	
+	$('#testButton').click(function() {
+		//test
+	});
+	$('#testButton2').click(function() {
+		//test
+	});
 });
 
 function showOrderFailUI() {
@@ -24,13 +31,21 @@ function hideOrderFailUI() {
 	orderFailUI.fadeOut();
 }
 function setSuccessUI() {
-	for( i=0; i < level.order.length; i++) {
-		$('#successSammary')
+	var summaryList = $('#successSammary');
+	for( i=0; i < level.order.ingredients.length; i++) {
+		var type = level.order.ingredients[i].type;
+		var num = level.order.ingredients[i].num;
+		alert(type);
+		summaryList.append('<li><span class="sammaryType">'+type+'</span> : <span class="sammaryNum">'+num+'</span></li>');
 	}
 }
 function showSuccessUI() {
 	orderSuccessUI.fadeIn();
 }
+function hideSuccessUI() {
+	orderSuccessUI.fadeOut();
+}
+
 function showOrderSummaryUI() {
 	orderSummaryUI.fadeIn();
 }
