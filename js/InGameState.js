@@ -7,9 +7,9 @@ function OnEnterInGameState()
 	$('#inGameMenu-replay').click( function(e) {
 		controller.restartGame();
 	});
-	initLevel();
+
 	
-	orderSummary = new OrderSummary();
+	showOrderSummaryUI();
 	
 	controller.setOnCatchIngredient( OnCatchIngredient )
 	controller.startGame();

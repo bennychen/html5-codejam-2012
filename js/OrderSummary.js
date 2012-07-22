@@ -25,7 +25,7 @@ function OrderSummary( ){
 	hideAllIngredients();
 	initOrderSummaryUIByLevel(level);
 	
-	showOrderSummaryUI();
+	//
 	
 	this.subTotal = 0;
 }
