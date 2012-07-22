@@ -1,7 +1,7 @@
 (function(window) {
 
 	function IngredientFactory() {
-		this.ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce",'top', 'top', 'top','top'];
+		this.ingredients = ["onion", "tomato", "egg", "cheese", "meat", "lettuce",'top'];
 	}
 	
 	Ingredient.ingredients;
@@ -9,7 +9,23 @@
 	
 	IngredientFactory.prototype.CreateRandomIngredient = function()
 	{
-		var type = this.ingredients[Math.random()*this.ingredients.length|0];
+		
+		var type;
+		while(true) {
+			type = this.ingredients[Math.random()*this.ingredients.length|0];
+			if(orderSummary.ingredientCountToGo[type] == undefined || 
+				orderSummary.ingredientCountToGo[type] == 0 ) {
+				var newRand = Math.random();
+				if(newRand < 0.5) {
+					break;
+				}	
+			}
+			else {
+				break;
+			}
+		}
+		
+		
 		var width = utils.getIngredientWidth();
 		var height = utils.getIngredientHeight(type);
 		var ingredient = new Ingredient(type, width, height);
