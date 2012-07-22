@@ -57,9 +57,9 @@ function handleFileLoad(event) {
 			switch (id) {
 				case "sky":
 					// grab canvas width and height for later calculations:
-					sky = new Shape(new Graphics().beginBitmapFill(result).drawRect(0,0,canvas.width,5000));
+					sky = new Shape(new Graphics().beginBitmapFill(result).drawRect(0,0,canvas.width,5394));
 					sky.x=0;
-					sky.y=-4100;
+					sky.y=-5394;
 			}
 		}
 

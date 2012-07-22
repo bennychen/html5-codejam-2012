@@ -172,9 +172,7 @@ Controller.prototype.update = function()
 		lastIngredient = ingredient;
 	}
 	
-	sky.y = -4100+2*totalHeight;
-	
-					
+	sky.y = -5394 + this.canvas.height + this.stageOffsetY;
 					
 	// draw the updates to stage:
 	this.stage.update();
