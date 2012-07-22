@@ -394,7 +394,13 @@ body {
 
 #successDialog {
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: 980px;
+	height: 620px;
+	left:10px;
+	top:10px;
+	display: none;
+	background: url(../img/successbg.png);
+	font-family: "Rock Salt";
+
 	
 }

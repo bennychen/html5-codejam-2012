@@ -1,9 +1,11 @@
 var orderSummaryUI;
 var orderFailUI;
+var orderSuccessUI;
 
 $(document).ready(function() {
 	orderSummaryUI = $('#inGameMenu');
 	orderFailUI = $('#failDialog');
+	orderSuccessUI = $('#successDialog');
 	
 	orderFailUI.click(function(){
 			
@@ -15,6 +17,12 @@ function showOrderFailUI() {
 }
 function hideOrderFailUI() {
 	orderFailUI.fadeOut();
+}
+function setSuccessUI(level,summary) {
+	
+}
+function showSuccessUI() {
+	orderSuccessUI.fadeIn();
 }
 function showOrderSummaryUI() {
 	orderSummaryUI.fadeIn();
