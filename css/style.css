@@ -398,9 +398,8 @@ body {
 	height: 620px;
 	left:10px;
 	top:10px;
-	display: none;
 	background: url(../img/successbg.png);
 	font-family: "Rock Salt";
-
+	display: none;
 	
 }

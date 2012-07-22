@@ -18,8 +18,10 @@ function showOrderFailUI() {
 function hideOrderFailUI() {
 	orderFailUI.fadeOut();
 }
-function setSuccessUI(level,summary) {
-	
+function setSuccessUI() {
+	for( i=0; i < level.order.length; i++) {
+		$('#successSammary')
+	}
 }
 function showSuccessUI() {
 	orderSuccessUI.fadeIn();

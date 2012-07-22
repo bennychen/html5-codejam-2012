@@ -44,7 +44,7 @@ function handleFileLoad(event)
 	{
 		if ( event.id == "sky" )
 		{
-			sky = new Shape(new Graphics().beginBitmapFill(event.result).drawRect(0,0,canvas.width,5394));
+			sky = new Shape(new Graphics().beginBitmapFill(event.result).drawRect(0,0,canvas.width,5600));
 		}
 		else
 		{

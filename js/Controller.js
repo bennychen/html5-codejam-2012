@@ -186,7 +186,7 @@ Controller.prototype.update = function()
 		lastIngredient = ingredient;
 	}
 	
-	sky.y = -5394 + this.canvas.height + this.stageOffsetY;
+	sky.y = -5600 + this.canvas.height + this.stageOffsetY;
 					
 	// draw the updates to stage:
 	this.stage.update();
