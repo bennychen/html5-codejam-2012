@@ -23,6 +23,7 @@
 
 	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/State.js"></script>
+	<script type="text/javascript" src="js/PreloadState.js"></script>
 	<script type="text/javascript" src="js/MenuState.js"></script>
 	<script type="text/javascript" src="js/FailureState.js"></script>
 	<script type="text/javascript" src="js/InGameState.js"></script>
@@ -57,11 +58,12 @@
 		factory = new IngredientFactory();
 		controller = new Controller(stage, canvas);
 
+		SM.RegisterState( "preload", PreloadState )
 		SM.RegisterState( "ingame", InGameState );
 		SM.RegisterState( "menu", MenuState );
 		SM.RegisterState( "failure", FailureState );
 		
-		SM.SetStateByName( "ingame" );
+		SM.SetStateByName( "preload" );
 	}
 	
 	

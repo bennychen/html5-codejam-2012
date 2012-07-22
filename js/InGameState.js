@@ -1,8 +1,4 @@
 
-var loader;
-var assets;
-var manifest;
-var sky;
 function OnEnterInGameState()
 {	
 	//register key functions
@@ -16,58 +12,12 @@ function OnEnterInGameState()
 	controller.setOnCatchIngredient( OnCatchIngredient )
 	controller.startGame();
 	//start game timer
-	
-	
-	assets = [];
 
-	manifest = [
-		{src:'./img/verticalsky.jpg', id:"sky"}
-	];
-	
-	loader = new PreloadJS();
-	loader.useXHR = false; //Loads the images using tag loading.
-	
-	loader.onFileLoad = handleFileLoad;
-	loader.onComplete = handleComplete;
-	
-	loader.loadManifest(manifest);
-	
-	
-	
-	
-	
-	
+	stage.addChildAt(sky,0);
+	stage.update();
+	Ticker.addListener(window);
 }
 
-function handleFileLoad(event) {
-
-		assets.push(event);
-	}
-
-	function handleComplete() {
-		for(var i=0;i<assets.length;i++) {
-			var item = assets[i]; //loader.getResult(id);
-			var id = item.id;
-			var result = item.result;
-			
-			if (item.type == PreloadJS.IMAGE) {
-				var bmp = new Bitmap(result);
-			}
-
-			switch (id) {
-				case "sky":
-					// grab canvas width and height for later calculations:
-					sky = new Shape(new Graphics().beginBitmapFill(result).drawRect(0,0,canvas.width,5394));
-					sky.x=0;
-					sky.y=-5394;
-			}
-		}
-
-		stage.addChildAt(sky,0);
-		stage.update();
-		Ticker.addListener(window);
-	}
-	
 function OnExitInGameState()
 {
 	document.onkeydown = null;
