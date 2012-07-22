@@ -1,6 +1,7 @@
 (function(window) {
 
 	function IngredientFactory() {
+		this.ingredients = ['top'];
 	}
 	
 	Ingredient.ingredients;
@@ -8,7 +9,7 @@
 	
 	IngredientFactory.prototype.CreateRandomIngredient = function()
 	{
-		var type = IngredientTypes[Math.random()*IngredientTypes.length|0];
+		var type = this.ingredients[Math.random()*this.ingredients.length|0];
 		var width = utils.getIngredientWidth();
 		var height = utils.getIngredientHeight(type);
 		var ingredient = new Ingredient(type, width, height);
