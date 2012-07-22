@@ -3,10 +3,10 @@ var orderFailUI;
 
 $(document).ready(function() {
 	orderSummaryUI = $('#inGameMenu');
-	orderFailUI = $('#orderFailDialog');
+	orderFailUI = $('#failDialog');
 	
 	orderFailUI.click(function(){
-		
+			
 	});
 });
 
