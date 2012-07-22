@@ -404,11 +404,31 @@ body {
 	display: none;
 	text-align: left;
 }
-.orderName{
-	margin:170px 0 0 230px;
-	text-align: left;
+#introDialog {
+	background: url(../img/introbg.png);
 }
-#successOrderName {
+#intro-order {
+	list-style: none;
+	padding-left: 270px;
+}
+#intro-order li {
+	padding:5px 0;
+	font-size: 1.4em;
+}
+#intro-order li img {
+	width: 80px;
+	height: auto;
+	padding-right: 25px;
+}
+.orderName{
+	margin:130px 0 0 220px;
+	padding-bottom: 40px;
+	text-align: left;
+	-webkit-transform: rotate(-8deg);
+	-moz-transform: rotate(-8deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-8);
+}
+#successOrderName,#introOrderName {
 	color:#8d1504;
 	font-size: 1.2em;
 }
@@ -421,4 +441,14 @@ body {
 .sammaryType,.sammaryNum {
 	display: inline-block;
 }
-
+#avatarContainer {
+	position: absolute;
+	top:0;
+	left: 700px;
+	width: 309px;
+	height: 326px;
+	background: url(../img/avatar.png) no-repeat left top;
+	-webkit-transform: rotate(15deg);
+	-moz-transform: rotate(15deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=15);
+}

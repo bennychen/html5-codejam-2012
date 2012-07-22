@@ -2,6 +2,7 @@ function OnEnterMenuState()
 {
 	//TODO
 	initMenu();
+	backgroundMusic = SoundJS.play( "backgroundmusic" , SoundJS.INTERRUPT_NONE, 0, 0, -1 );
 }
 
 function OnExitMenuState()
