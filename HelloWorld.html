@@ -105,6 +105,11 @@
 				<p id="tip">Tip: 0%</p>
 				</div>
 				<a style="position:relative" id="inGameMenu-replay" onclick="controller.restartGame();">Replay</a>
+				
+				<div id="avatarContainer">
+					<p id="inGameMenu-username">Duck Sir</p>
+					<p id="inGameMenu-totalTips">$ 100.2</p>
+				</div>
 			</div><!--inGameMenu-->
 
 			<div id="failDialog">
@@ -128,6 +133,19 @@
 			</div>
 			
 			<div id="introDialog">
+			<p class="orderName">Order #<span id="introOrderNum">1</span> <span id="introOrderName">Seemeloo Burger</span></p>
+				
+			<ul id="intro-order">
+				<li id="intro-breadTop"><img src="img/burger/top.png" /></li>
+				<li id="intro-onion"><img src="img/burger/onion.png" /> x <span id="intro-onionNum">0</span></li>
+				<li id="intro-cheese"><img src="img/burger/cheese.png" /> x <span id="intro-cheeseNum">0</span></li>
+				<li id="intro-lettuce"><img src="img/burger/lettuce.png" /> x <span id="intro-lettuceNum">0</span></li>
+				<li id="intro-egg"><img src="img/burger/egg.png" /> x <span id="intro-eggNum">0</span></li>
+				<li id="intro-meat"><img src="img/burger/meat.png" /> x <span id="intro-meatNum">0</span></li>
+				<li id="intro-tomato"><img src="img/burger/tomato.png" /> x <span id="intro-tomatoNum">0</li>
+				<li id="intro-breadBottom"><img src="img/burger/bottom.png" /></li>
+
+			</ul>
 					<a id="testButton">Start Game</a>
 					<a id="testButton2">Back</a>
 			</div>

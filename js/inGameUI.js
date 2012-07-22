@@ -35,6 +35,19 @@ function hideOrderFailUI() {
 function showIntroUI() {
 	introUI.fadeIn();
 }
+function setIntroUI() {
+	for( var i=0; i<IngredientTypes.length; i++) {
+		var type = IngredientTypes[i];
+		$('#intro-' + type).hide();
+		
+	}
+	for( i=0; i < level.order.ingredients.length; i++) {
+		var type = level.order.ingredients[i].type;
+		var num = level.order.ingredients[i].num;
+		$('#intro-'+type+'Num').text(num);
+		$('#intro-'+type).show();
+	}	
+}
 function hideIntroUI() {
 	introUI.fadeOut();
 }
