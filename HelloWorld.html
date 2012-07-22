@@ -28,6 +28,8 @@
 	<script type="text/javascript" src="js/InGameState.js"></script>
 	<script type="text/javascript" src="js/Utils.js"></script>
 	<script type="text/javascript" src="js/OrderSummary.js"></script>
+	<script type="text/javascript" src="js/OrderSummaryUI.js"></script>
+
 	<script>
 	
 	var canvas;
@@ -91,15 +93,15 @@
 					<li id="breadBottom"><img src="img/burger/bottom.png" /></li>
 
 				</ul>
+				<hr />
 				<div id="inGameMenu-Summary">
 				<p id="total">$70</p>
 				<p id="tip">Tip:3%</p>
 				</div>
-				<hr />
+				<a id="inGameMenu-replay" onclick="controller.restartGame();">Replay</a>
 			</div>
 	</div>
 	
-
 
 
 </body>

@@ -74,15 +74,8 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 
 OrderSummary.prototype.render = function()
 {
-
-	for( var i=0; i<IngredientTypes.length; i++) {
-		var type = IngredientTypes[i];
-		if(this.ingredientCountToGo[type] != undefined)
-		{
-			$('#' + type + 'Num').text( this.ingredientCountToGo[type] );
-		}
-		
-	}
+	var ingredientCountToGo = this.ingredientCountToGo;
+	setOrderSummaryUIByIngredient(ingredientCountToGo);
 }
 
 var orderSummary;
