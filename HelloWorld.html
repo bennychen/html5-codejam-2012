@@ -87,6 +87,7 @@
 		<canvas id="mainCanvas" width="980" height="620"></canvas>
 			<div id="inGameMenu">
 				<div id="inGameMenu-leftMask"></div>
+				<div id="inGameMenu-rightMask"></div>
 				<div id="inGameMenu-orderName"></div>
 				<ul id="inGameMenu-order">
 					<li id="breadTop"><img src="img/burger/top.png" /></li>
@@ -106,10 +107,7 @@
 				</div>
 				<a style="position:relative" id="inGameMenu-replay" onclick="controller.restartGame();">Replay</a>
 				
-				<div id="avatarContainer">
-					<p id="inGameMenu-username">Duck Sir</p>
-					<p id="inGameMenu-totalTips">$ 100.2</p>
-				</div>
+
 			</div><!--inGameMenu-->
 
 			<div id="failDialog">
@@ -131,7 +129,10 @@
 					<a id="nextButton">Start Game</a>
 					<a id="backButton">Back</a>
 			</div>
-			
+			<div id="avatarContainer">
+				<p id="avatar-username">Duck Sir</p>
+				<p id="avatar-totalTips">$ 100.2</p>
+			</div>			
 			<div id="introDialog">
 			<p class="orderName">Order #<span id="introOrderNum">1</span> <span id="introOrderName">Seemeloo Burger</span></p>
 				

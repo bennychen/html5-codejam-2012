@@ -20,12 +20,15 @@ easyOrders.push({
 		 name:'Prizeburger',
 		 ingredients:[
 			 {type:'meat', num: 1 },
+
 		 ]
  });
 easyOrders.push({
 		 name:'BLOOP',
 		 ingredients:[
+
 			 {type:'onion', num: 1 },
+
 		 ]
  });
 	 	
@@ -37,7 +40,7 @@ normalOrders.push({
 			 {type:'cheese', num: 9 },
 			 {type:'meat', num: 9 },
 			 {type:'egg', num: 9 },
-			 {type:'lettuce', num: 9 },
+			 {type:'lettuce', num: 9 }
 			 
 		 ]
  });

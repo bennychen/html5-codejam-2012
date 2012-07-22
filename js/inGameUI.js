@@ -2,12 +2,15 @@ var orderSummaryUI;
 var orderFailUI;
 var orderSuccessUI;
 var introUI;
+var avatarUI;
+
 
 $(document).ready(function() {
 	orderSummaryUI = $('#inGameMenu');
 	orderFailUI = $('#failDialog');
 	orderSuccessUI = $('#successDialog');
 	introUI = $('#introDialog');
+	avatarUI = $('#avatarContainer');
 	
 	orderFailUI.click(function(){
 		
@@ -32,7 +35,12 @@ $(document).ready(function() {
 		SM.SetStateByName("gameIntro");
 	});
 });
-
+function showAvatarUI() {
+	avatarUI.fadeIn();
+}
+function hideAvatarUI() {
+	avatarUI.fadeOut();
+}
 function showOrderFailUI() {
 	orderFailUI.fadeIn(function() {
 		 $('#inGameMenu-replay').click(function(e) {
@@ -85,16 +93,20 @@ function showSuccessUI() {
 	orderSuccessUI.fadeIn(function() {
 		$('#inGameMenu-replay').attr("disabled","disabled"); 
 	});
+	showAvatarUI();
 }
 function hideSuccessUI() {
 	orderSuccessUI.fadeOut(function() {
 		$('#inGameMenu-replay').removeAttr("disabled"); 
 	});
+	hideAvatarUI();
 }
+
 
 function showOrderSummaryUI() {
 	
 	orderSummaryUI.fadeIn( function() {
+
 		$('#moveLeft').css('display','block');
 		$('#moveRight').css('display','block');
 		$('#moveLeft').mousedown(function () {
@@ -111,15 +123,21 @@ function showOrderSummaryUI() {
 		$('#moveRight').mouseup(function() {
 			rtHeld = false;
 		});
+
+			showAvatarUI();
+
 	});
+
 }
 function hideOrderSummaryUI() {
+
 	orderSummaryUI.fadeOut(function(){
 		$('#moveLeft').css('display','none');
 		$('#moveRight').css('display','none');
 	}
 	);
 	
+
 }
 
 function initOrderSummaryUIByLevel(level) {
