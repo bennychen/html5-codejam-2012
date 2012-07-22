@@ -17,10 +17,10 @@ $(document).ready(function() {
 	});
 	
 	$('#testButton').click(function() {
-		//test
+		SM.SetStateByName("ingame");
 	});
 	$('#testButton2').click(function() {
-		//test
+		SM.SetStateByName("menu");
 	});
 });
 

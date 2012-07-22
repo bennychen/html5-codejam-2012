@@ -40,6 +40,7 @@ function initMenu() {
 		{
 			//menuStartActive.visible = true;
 			//menuStart.visible = false;
+			SM.SetStateByName( "gameIntro" );
 		}
 		menuStart.onClick = function(evt)
 		{
@@ -47,7 +48,7 @@ function initMenu() {
 			//menuStart.visible = true;
 
 			//cross browser issues exist
-			SM.SetStateByName( "ingame" );
+			SM.SetStateByName( "gameIntro" );
 		}
 		menuStart.onMouseOver = function() {
 			
