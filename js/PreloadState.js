@@ -1,6 +1,3 @@
-var assets;
-var sky;
-
 function OnEnterPreloadState()
 {
 	var text = new Text("Loading ...", "36px Arial", "#777");
@@ -8,7 +5,7 @@ function OnEnterPreloadState()
 	text.x = 360;
 	text.y = 200;
 
-	assets = [];
+	assets = {};
 
 	var manifest = [
 		{src:'./img/verticalsky.jpg', id:"sky"},
@@ -43,28 +40,23 @@ function OnExitPreloadState()
 function handleFileLoad(event) 
 {
 	var asset = { id: event.id, type: event.type, result: event.result };
-	assets.push( asset );
+	if (event.type == PreloadJS.IMAGE) 
+	{
+		if ( event.id == "sky" )
+		{
+			sky = new Shape(new Graphics().beginBitmapFill(event.result).drawRect(0,0,canvas.width,5394));
+		}
+		else
+		{
+			asset.bmp = new Bitmap(event.result);
+		}
+	}
+
+	assets[ asset.id ] = asset;
 }
 
 function handleComplete() 
 {
-	for(var i = 0; i<assets.length; i++) 
-	{
-		var item = assets[i];
-		
-		if (item.type == PreloadJS.IMAGE) 
-		{
-			if ( item.id == "sky" )
-			{
-				sky = new Shape(new Graphics().beginBitmapFill(item.result).drawRect(0,0,canvas.width,5394));
-			}
-			else
-			{
-				item.bmp = new Bitmap(item.result);
-			}
-		}
-	}
-
 	SM.SetStateByName( "menu" )
 }
 

@@ -2,7 +2,6 @@ function OnEnterMenuState()
 {
 	//TODO
 	initMenu();
-	 
 }
 
 function OnExitMenuState()
@@ -20,45 +19,31 @@ function handleBgImageLoad(event) {
 
 function initMenu() {
 
-	// load the source image:
-	MenuState.startimage = new Image();
-	MenuState.startimage.src = 'img/menustart.png';
-	MenuState.startimagehover = new Image();
-	MenuState.startimagehover.src = 'img/menustartactive.png';
-	var bgimage = new Image();
-	bgimage.src = "img/menubg.png";
-	
-	
 	MenuState.container = new Container();
 	stage.addChild(MenuState.container);
 
-	var bitmap = new Bitmap(bgimage);
-	MenuState.container.addChild(bitmap);
-	bitmap = new Bitmap(MenuState.startimage);
-		
-	bitmap.x = 350;
-	bitmap.y = 320;
-	
-	 
-	MenuState.container.addChild(bitmap);
+	MenuState.container.addChild(assets.menubackground.bmp);
+
+	var menuStart = assets.menustart.bmp;
+	menuStart.x = 350;
+	menuStart.y = 320;
+	MenuState.container.addChild(menuStart);
 	//bitmap.onPress = handleStartPress;
-	
 
 	(function(target) {
-		bitmap.onPress = function(evt) {
+		menuStart.onPress = function(evt) {
 			//cross browser issues exist
 			SM.SetStateByName( "ingame" );
 
 		}
-		bitmap.onMouseOver = function() {
+		menuStart.onMouseOver = function() {
 			
 		}
-		bitmap.onMouseOut = function() {
+		menuStart.onMouseOut = function() {
 
 		}
-	})(bitmap);	 	 
+	})(menuStart);	 	 
 	stage.update();	 
-
 }
 
 
