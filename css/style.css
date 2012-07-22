@@ -464,7 +464,7 @@ body {
 #avatar-totalTips{
 	padding-top:180px;
 }
-#testButton,#testButton2 {
+#testButton,#testButton2,#nextButton,#backButton {
 display: inline-block;
 background:url(../img/primarybtnbg.png) no-repeat left top;
 width: 169px;
@@ -475,18 +475,33 @@ padding-right:30px;
 color:#777470;
 line-height: 73px;
 cursor: pointer;
+position: absolute;
+
 }
 #testButton {
-	position: relative;
+	position: absolute;
 	left:690px;
+	top:400px
+}
+#testButton2,#backButton {
+	background-image: url(../img/normalbtnbg.png);
 }
 #testButton2 {
-	background-image: url(../img/normalbtnbg.png);
-	position: relative;
-	left:490px;
-	top:100px;
+	position: absolute;
+	left:690px;
+	top:500px;	
 }
-#testButton:hover,#testButton2:hover {
+#nextButton {
+	position: absolute;
+	top:400px;
+	left:720px;
+}
+#backButton {
+	position: absolute;
+	top:500px;
+	left:720px;
+}
+#testButton:hover,#testButton2:hover,#nextButton:hover,#backButton:hover {
 	background-position: left -73px;
 	color:red;
 }
