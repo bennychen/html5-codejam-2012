@@ -82,7 +82,7 @@ function setSuccessUI() {
 	
 	$('#successTotal').text( '$' + orderSummary.subTotal );
 	
-	var tips = Math.round(orderSummary.subTotal * orderSummary.tips) / 100;
+	var tips = Math.round(orderSummary.subTotal * orderSummary.tips * 100);
 	
 	$('#successTips').text( '$' + tips );
 }
