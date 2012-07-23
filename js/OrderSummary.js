@@ -87,6 +87,12 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 
 }
 
+OrderSummary.prototype.calculateTips = function() {
+	var tips;
+	tips =  Math.round(this.subTotal * 100 * this.tips) / 10000;
+	return tips;
+}
+
 OrderSummary.prototype.render = function()
 {
 	setOrderSummaryTip(this.tips);

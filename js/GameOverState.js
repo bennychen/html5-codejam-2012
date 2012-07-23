@@ -2,6 +2,8 @@ function OnEnterGameOverState()
 {
 	
 	if(orderSummary.isOrderComplete()) {
+		
+		player.addTips(orderSummary.calculateTips());
 		setSuccessUI();;
 		showSuccessUI();
 	}

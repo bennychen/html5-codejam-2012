@@ -50,14 +50,14 @@ easyOrders.push({
  });
 	 	
 normalOrders.push({
-		 name:'Maxburger',
+		 name:'Raccoburger',
 		 ingredients:[
-			 {type:'onion', num:9},
-			 {type:'tomato', num: 9 },
-			 {type:'cheese', num: 9 },
-			 {type:'meat', num: 9 },
-			 {type:'egg', num: 9 },
-			 {type:'lettuce', num: 9 }
+			 {type:'onion', num:2},
+			 {type:'tomato', num: 4 },
+			 {type:'cheese', num: 2 },
+			 {type:'meat', num: 1 },
+			 {type:'egg', num: 6 },
+			 {type:'lettuce', num: 3 }
 			 
 		 ]
  });
@@ -113,15 +113,15 @@ normalOrders.push({
 		]
 	 });
 	 
-normalOrders.push({
+hardOrders.push({
 		 name:'SkyBurger',
 		 ingredients:[
-			 {type:'onion', num:0},
-			 {type:'tomato', num:0 },
-			 {type:'cheese', num:0 },
-			 {type:'meat', num:0 },
-			 {type:'egg', num:0 },
-			 {type:'lettuce', num:0 }
+			 {type:'onion', num:9},
+			 {type:'tomato', num:9 },
+			 {type:'cheese', num:9 },
+			 {type:'meat', num:9 },
+			 {type:'egg', num:9 },
+			 {type:'lettuce', num:9 }
 			 
 		 ]
 });
@@ -136,7 +136,7 @@ function getOrder(difficulty) {
 		return easyOrders[Math.random()*easyOrders.length|0]
 		
 	} else if ( 'normal' == difficulty ) {
-		return normalOrders[Math.random()*easyOrders.length|0]
+		return normalOrders[Math.random()*normalOrders.length|0]
 		
 	} else {
 		return hardOrders[Math.random()*hardOrders.length|0]

@@ -32,6 +32,7 @@ $(document).ready(function() {
 	});
 });
 function showAvatarUI() {
+	$('#avatar-totalTips').text('$ '+ player.totalTips);
 	avatarUI.fadeIn();
 }
 function hideAvatarUI() {
