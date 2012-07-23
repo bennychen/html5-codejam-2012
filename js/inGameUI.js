@@ -53,6 +53,8 @@ function hideOrderFailUI() {
 	});
 }
 function showIntroUI() {
+	$('#introOrderNum').text(level.levelNum);
+	$('#introOrderName').text(level.order.name);
 	introUI.fadeIn();
 }
 function setIntroUI() {
@@ -72,6 +74,10 @@ function hideIntroUI() {
 	introUI.fadeOut();
 }
 function setSuccessUI() {
+
+	$('#successOrderNum').text(level.levelNum);
+	$('#successOrderName').text(level.order.name);
+	
 	var summaryList = $('#successSammary');
 	summaryList.find('li').remove();
 	for( i=0; i < level.order.ingredients.length; i++) {
@@ -82,9 +88,9 @@ function setSuccessUI() {
 	
 	$('#successTotal').text( '$' + orderSummary.subTotal );
 	
-	var tips = Math.round(orderSummary.subTotal * orderSummary.tips * 100);
+	var tips = Math.round(orderSummary.subTotal * 100 * orderSummary.tips) / 10000;
 	
-	$('#successTips').text( '$' + tips );
+	$('#successTips').text( '$' + tips);
 }
 function showSuccessUI() {
 	orderSuccessUI.fadeIn(function() {
@@ -154,6 +160,8 @@ function hideOrderSummaryUI() {
 }
 
 function initOrderSummaryUIByLevel(level) {
+	$('#order-num').text(level.levelNum);
+	$('#order-name').text(level.order.name);
 	for(var i=0; i<level.order.ingredients.length; i++){
 			
 		$('#' + level.order.ingredients[i].type).show();	
@@ -184,8 +192,12 @@ function setOrderSummaryUIByIngredient(ingredientCountToGo) {
 }
 
 function setOrderSummaryTip(tip){
-	$('#tip').text('Tips: '+ tip);
+	$('#tip').text('Tips: '+ tip + "%");
 }
 function setOrderSummaryTotal(total){
 	$('#total').text('$ '+total);
+}
+
+function hideLoading(){
+	$('#beforePreload').hide();
 }

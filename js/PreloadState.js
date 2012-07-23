@@ -1,8 +1,9 @@
 function OnEnterPreloadState()
 {
-	var text = new Text("Loading assets ...", "36px Arial", "#777");
-	text.x = canvas.width / 2;
-	text.y = canvas.height / 2;
+	hideLoading();
+	var text = new Text("Loading assets ...", '36px "Rock Salt"', "#777");
+	text.x = 200;
+	text.y = 300;
 	stage.addChild(text);
 	stage.update()
 

@@ -526,3 +526,13 @@ position: absolute;
 #moveRight:hover,#moveRight:active {
 	background-position: right -150px;
 }
+
+#beforePreload{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top:300px;
+	color:#FFF;
+	font-size:1.2em;
+	font-family: "Rock Salt";
+}

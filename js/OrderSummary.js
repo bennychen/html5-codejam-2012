@@ -74,13 +74,13 @@ OrderSummary.prototype.addIngredient = function(ingredient)
 			togoCount = 0;
 		} else {
 		
-			this.subTotal = (this.subTotal * 100 + IngredientPrice[type] * 100 ) / 100;
+			this.subTotal = Math.round(this.subTotal * 100 + IngredientPrice[type] * 100 ) / 100;
 
 			this.addTips();
 		}
 		this.ingredientCountToGo[type] = togoCount;
 	}
-	else {
+	else if( 'top' != type ){
 		this.subtractTips();
 	}
 	

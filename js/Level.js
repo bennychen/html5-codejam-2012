@@ -144,7 +144,6 @@ Level.prototype.generateNextLevel = function() {
 
 function initLevel() {
 	level = new Level();
-	level.generateNextLevel();
 }
 
 
