@@ -8,18 +8,32 @@ var IngredientPrice = {
 	lettuce:0.57 ,
 	cheese:1.02
 };
-
+var veryEasyOrders = [];
 var easyOrders = [];
 var normalOrders = [];
 var hardOrders = [];
 
 var level = null;
 
-
+veryEasyOrders.push({
+		 name:'Meatburger',
+		 ingredients:[
+			 {type:'meat', num: 1 }
+		 ]
+ });
+veryEasyOrders.push({
+		 name:'Onionburger',
+		 ingredients:[
+			 {type:'onion', num: 1 }
+		 ]
+ });
 easyOrders.push({
 		 name:'Prizeburger',
 		 ingredients:[
 			 {type:'meat', num: 1 },
+			 {type:'tomato', num:1 },
+			 {type:'onion', num: 1 },
+			 {type:'cheese', num:3 }
 
 		 ]
  });
@@ -27,7 +41,10 @@ easyOrders.push({
 		 name:'BLOOP',
 		 ingredients:[
 
-			 {type:'onion', num: 1 },
+			 {type:'meat', num: 4 },
+			 {type:'egg', num:2 },
+			 {type:'onion', num: 4 },
+			 {type:'lettuce', num:2 }
 
 		 ]
  });
@@ -112,7 +129,10 @@ normalOrders.push({
 
 function getOrder(difficulty) {
 	
-	if ( 'easy' == difficulty ) {
+	if ( 'veryeasy' == difficulty ) {
+		return veryEasyOrders[Math.random()*veryEasyOrders.length|0]
+	}	
+	else if( 'easy' == difficulty ) {
 		return easyOrders[Math.random()*easyOrders.length|0]
 		
 	} else if ( 'normal' == difficulty ) {
@@ -133,6 +153,8 @@ Level.prototype.generateNextLevel = function() {
 	this.levelNum++;
 	
 	if ( this.levelNum < 3 ) {
+		this.order = getOrder('veryeasy');
+	} else if (this.levelNum < 5 ){
 		this.order = getOrder('easy');
 	} else if ( 0 == (this.levelNum % 10))  {
 		this.order = getOrder('hard');
