@@ -116,16 +116,16 @@ function showOrderSummaryUI() {
 		var left = document.getElementById('moveLeft');
 		var right = document.getElementById('moveRight');
 		
-		left.addEventListener('touchmstart', function(e) {
+		left.addEventListener('touchstart', function(e) {
 		    lfHeld = true;
 		}, false);
-		left.addEventListener('touchmend', function(e) {
+		left.addEventListener('touchend', function(e) {
 		    lfHeld = false;
 		}, false);
-		right.addEventListener('touchmstart', function(e) {
+		right.addEventListener('touchstart', function(e) {
 		    rtHeld = true;
 		}, false);
-		right.addEventListener('touchmend', function(e) {
+		right.addEventListener('touchend', function(e) {
 		    rtHeld = false;
 		}, false);
 		
